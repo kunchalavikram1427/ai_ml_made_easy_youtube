@@ -1,0 +1,244 @@
+---
+description: Generate a beautifully formatted README (.md) from a PowerPoint (.pptx) file
+allowed-tools: Bash, Read, Write, Edit, AskUserQuestion, WebFetch, Agent
+---
+
+# Generate README from PPTX
+
+You are a README generator that converts PowerPoint (.pptx) files into well-formatted, visually appealing Markdown README files for the ai_ml_made_easy_youtube repository.
+
+## Step 1: Get Input PPTX Path
+
+If no PPTX file path was provided as an argument (`$ARGUMENTS`), ask the user:
+- "What is the path to the .pptx file you want to convert?"
+
+Validate the file exists using `ls -la <path>`. If it doesn't exist, inform the user and ask again.
+
+## Step 2: Extract PPTX Content
+
+Use python3 to extract text content from the PPTX file. Install python-pptx if needed:
+
+```bash
+pip3 install python-pptx 2>/dev/null
+```
+
+Then extract all slide text:
+
+```python
+python3 -c "
+from pptx import Presentation
+import json, sys
+
+prs = Presentation(sys.argv[1])
+slides = []
+for i, slide in enumerate(prs.slides):
+    slide_data = {'slide_number': i + 1, 'shapes': []}
+    for shape in slide.shapes:
+        if shape.has_text_frame:
+            text = shape.text_frame.text.strip()
+            if text:
+                slide_data['shapes'].append(text)
+        if shape.has_table:
+            table_data = []
+            for row in shape.table.rows:
+                row_data = [cell.text.strip() for cell in row.cells]
+                table_data.append(row_data)
+            slide_data['shapes'].append({'table': table_data})
+    if slide_data['shapes']:
+        slides.append(slide_data)
+print(json.dumps(slides, indent=2))
+" "<PPTX_PATH>"
+```
+
+## Step 3: Determine Output Path and Filename
+
+1. Derive the default markdown filename from the PPTX filename:
+   - Example: `common_ai_ml_terminology_part01.pptx` → `common_ai_ml_terminology_part01.md`
+
+2. Infer the likely course folder from the filename:
+   - Look at the PPTX name and try to map it to an existing folder under `courses/`
+   - For AI/ML related files → `courses/ai_ml_foundations`
+   - For MCP related files → `courses/mcp`
+   - For Claude Code related files → `courses/claude_code`
+   - If unclear, suggest a reasonable folder name
+
+3. Ask the user to confirm or override using AskUserQuestion:
+   - header: "Output path"
+   - question: "The output file will be `courses/<inferred_folder>/<filename>.md`. Is this correct?"
+   - options:
+     - "Yes, that's correct" — proceed with the inferred path
+     - "No, let me specify" — ask for the full output path
+
+4. Check if the output file already exists:
+   ```bash
+   ls -la <output_path>
+   ```
+   If it exists, use AskUserQuestion:
+   - header: "File exists"
+   - question: "The file `<filename>.md` already exists at the target location. What would you like to do?"
+   - options:
+     - "Overwrite it" — proceed with overwriting
+     - "Use a different name" — ask user for a new filename
+     - "Cancel" — abort the operation
+
+## Step 4: Security Check
+
+Before generating the README, scan the extracted content for potentially sensitive data:
+- API keys, tokens, secrets (patterns like `sk-`, `api_key`, `token`, `password`, `secret`)
+- Internal URLs, IP addresses, or hostnames that look non-public
+- Email addresses or personal identifiers
+- Credentials or connection strings
+
+If any are found:
+- Warn the user about the specific items found
+- Ask if they want to proceed (those items will be redacted/omitted)
+- Replace sensitive content with placeholder text like `[REDACTED]` or `<your-api-key-here>`
+
+## Step 5: Generate the README
+
+Using the extracted slide content, generate a beautifully formatted Markdown file following these guidelines:
+
+### Formatting Rules
+
+**Heading Icons** — Use relevant emojis/icons as prefixes for headings:
+- `#` (H1): Use a prominent icon matching the topic (e.g., `# 🧠 Common AI/ML Terminology`)
+- `##` (H2): Use section-relevant icons (e.g., `## 📚 Key Concepts`, `## 🔍 Deep Dive`, `## 🎯 Learning Objectives`)
+- `###` (H3): Use contextual icons (e.g., `### 💡 Definition`, `### ⚙️ How It Works`)
+
+**Table of Contents** — Always include a TOC near the top:
+```markdown
+## 📑 Table of Contents
+
+- [Key Concepts](#-key-concepts)
+- [Deep Dive](#-deep-dive)
+- [Summary](#-summary)
+- [References](#-references)
+```
+
+**Content Structure** — Follow this general layout:
+1. Title with emoji
+2. Brief description/intro paragraph
+3. Table of Contents
+4. Learning Objectives (if applicable)
+5. Main content sections derived from slides
+6. Code blocks (with language hints) for any shell commands or code snippets
+7. Key takeaways / Summary
+8. References / Further Reading (if applicable)
+
+**Visual Enhancements:**
+- Use **bold** for key terms on first introduction
+- Use `inline code` for technical terms, commands, model names
+- Use blockquotes (`>`) for important notes or callouts:
+  ```markdown
+  > 💡 **Key Insight:** Transformers are the backbone of modern LLMs.
+  ```
+- Use tables for comparisons or structured data
+- Use bullet/numbered lists for sequential or grouped information
+- Use horizontal rules (`---`) between major sections
+- Use collapsible sections for optional/advanced content:
+  ```markdown
+  <details>
+  <summary>🔎 Click to expand: Advanced Details</summary>
+
+  Content here...
+
+  </details>
+  ```
+
+**Content Enhancement:**
+- You may lightly enhance or clarify the content from the slides for readability
+- Add brief context where slides have bullet points without explanation
+- Ensure technical accuracy — do not invent claims
+- Keep the tone educational and accessible
+- DO NOT include any images from the PPTX (they won't render in markdown without the files)
+- DO NOT expose or include any sensitive data found during the security check
+
+**Code Blocks:**
+- Always specify the language for syntax highlighting:
+  ````markdown
+  ```python
+  # Example code
+  ```
+  ````
+- Use `bash` / `shell` for terminal commands
+- Use appropriate language tags for all code snippets
+
+## Step 6: Write the README File
+
+Write the generated markdown to the determined output path.
+
+Ensure the parent directory exists:
+```bash
+mkdir -p <parent_directory>
+```
+
+Then write the file using the Write tool.
+
+## Step 7: Update Course Folder README
+
+Check if a `README.md` exists in the course folder (e.g., `courses/ai_ml_foundations/README.md`):
+
+### If README.md does NOT exist — Create it:
+
+Generate a course-level README.md with this structure:
+
+```markdown
+# <emoji> <Course Title>
+
+<Brief description of the course — 1-2 sentences explaining what this course covers.>
+
+---
+
+## 📑 Table of Contents
+
+- [Topics](#-topics)
+- [How to Use](#-how-to-use)
+
+---
+
+## 📚 Topics
+
+| # | Topic | Description | YouTube Video | Published Date |
+|---|-------|-------------|---------------|----------------|
+| 1 | [<Topic Title>](./<filename>.md) | <Brief 1-line description> | Pending | Pending |
+
+---
+
+## 🚀 How to Use
+
+1. Start with the topics in order
+2. Each topic links to a detailed README with explanations and examples
+3. YouTube videos will be added as they are published
+
+---
+
+> 📺 **Channel:** [AI ML Made Easy](https://www.youtube.com/@aimlmadeeasy)
+```
+
+### If README.md DOES exist — Update it:
+
+1. Read the existing README.md
+2. Find the Topics table
+3. Add a new row for the newly created topic README:
+   - Derive a human-readable topic title from the filename (e.g., `common_ai_ml_terminology_part01` → `Introduction to Common AI ML Terminology Part 01`)
+   - Increment the topic number
+   - Add the link, description, and "Pending" placeholders
+4. Use the Edit tool to insert the new row into the existing table
+5. DO NOT overwrite or remove any existing entries
+
+## Step 8: Confirmation
+
+After completing all steps, provide a summary to the user:
+
+```
+✅ README generated successfully!
+
+📄 Output file: <output_path>
+📁 Course folder: <course_folder>
+📋 Course README: <course_readme_status — created/updated>
+
+Summary:
+- Extracted content from <N> slides
+- Generated <N> sections
+- <Security findings if any>
+```

@@ -145,23 +145,26 @@ Using the extracted slide content, generate a beautifully formatted Markdown fil
   </details>
   ```
 
-**Content Enhancement:**
-- You may lightly enhance or clarify the content from the slides for readability
-- Add brief context where slides have bullet points without explanation
-- Ensure technical accuracy — do not invent claims
-- Keep the tone educational and accessible
+**Content Enhancement — Go Beyond the Slides:**
+- DO NOT just transcribe the slides — significantly enrich and expand upon them
+- Add real-world architecture patterns and system design context where relevant
+- Add latest industry examples (last year to current year era and beyond): mention current models, tools, companies, and trends
+- Add "How It Works Under the Hood" explanations that go one level deeper than surface definitions
+- Add architecture/flow diagrams using ASCII/text where they clarify a concept
+- Add comparison tables that highlight trade-offs, not just definitions
+- Add "When to Use What" practical guidance for practitioners
+- Include real numbers where helpful (model sizes, training data scales, latency expectations)
+- Use analogies and plain-English explanations to make technical concepts accessible
+- Ensure technical accuracy — do not invent claims, but DO add well-known technical context
+- Keep the tone educational and accessible — target a broad audience of learners, not just advanced engineers
 - DO NOT include any images from the PPTX (they won't render in markdown without the files)
 - DO NOT expose or include any sensitive data found during the security check
 
-**Code Blocks:**
-- Always specify the language for syntax highlighting:
-  ````markdown
-  ```python
-  # Example code
-  ```
-  ````
-- Use `bash` / `shell` for terminal commands
-- Use appropriate language tags for all code snippets
+**Code Snippets Policy:**
+- Do NOT include code snippets (Python, pseudo-code, or otherwise) by default
+- Code snippets should ONLY be included when the PPTX topic is specifically about programming (e.g., Python programming, coding tutorials, API usage)
+- For non-programming topics, explain concepts using plain English, analogies, ASCII flow diagrams, and tables instead of code
+- Use `bash` / `shell` blocks ONLY for terminal commands when the topic requires them
 
 ## Step 6: Write the README File
 
@@ -198,9 +201,9 @@ Generate a course-level README.md with this structure:
 
 ## 📚 Topics
 
-| # | Topic | Description | YouTube Video | Published Date |
-|---|-------|-------------|---------------|----------------|
-| 1 | [<Topic Title>](./<filename>.md) | <Brief 1-line description> | Pending | Pending |
+| # | Topic | Description | YouTube Video |
+|---|-------|-------------|---------------|
+| 1 | [<Topic Title>](./<filename>.md) | <Brief 1-line description> | Pending |
 
 ---
 

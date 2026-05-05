@@ -201,7 +201,7 @@ Generate a course-level README.md with this structure:
 
 ## 📚 Topics
 
-| # | Topic | Description | YouTube Video |
+| # | Topic | Description | YouTube Video/Playlist |
 |---|-------|-------------|---------------|
 | 1 | [<Topic Title>](./<filename>.md) | <Brief 1-line description> | Pending |
 

@@ -120,6 +120,12 @@ years = 10
 
 Triple-quoted strings (`"""..."""` or `'''...'''`) placed as the first statement in a module, function, class, or method become **docstrings**. They're not technically comments — they're accessible at runtime via `.__doc__` — but they serve a documentation purpose.
 
+Depending on their placement: 
+- At top of file → Module docstring
+- Inside a function → Function docstring
+- Inside a class → Class docstring
+
+
 ```python
 """
 This script demonstrates different types of comments in Python.

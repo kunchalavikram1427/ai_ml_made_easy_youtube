@@ -166,7 +166,18 @@ Using the extracted slide content, generate a beautifully formatted Markdown fil
 - For non-programming topics, explain concepts using plain English, analogies, ASCII flow diagrams, and tables instead of code
 - Use `bash` / `shell` blocks ONLY for terminal commands when the topic requires them
 
-## Step 6: Write the README File
+## Step 6: Ask for YouTube Video/Playlist Link
+
+Before writing the file, ask the user if they have a YouTube video or playlist link for this topic using AskUserQuestion:
+- header: "YouTube link"
+- question: "Do you have a YouTube video or playlist link for this topic?"
+- options:
+  - "Yes, let me provide it" — ask the user for the URL, then use it in the course README table
+  - "No, mark as Pending" — use "Pending" in the YouTube column of the course README table
+
+If the user provides a link, validate it looks like a YouTube URL (contains `youtube.com` or `youtu.be`). Store it for use in Step 8 when updating the course folder README table. Format it as a short markdown link: `[Video](url)` or `[Playlist](url)` based on whether it contains `/playlist?` or `/watch?`.
+
+## Step 7: Write the README File
 
 Write the generated markdown to the determined output path.
 
@@ -177,7 +188,7 @@ mkdir -p <parent_directory>
 
 Then write the file using the Write tool.
 
-## Step 7: Update Course Folder README
+## Step 8: Update Course Folder README
 
 Check if a `README.md` exists in the course folder (e.g., `courses/ai_ml_foundations/README.md`):
 
@@ -201,9 +212,9 @@ Generate a course-level README.md with this structure:
 
 ## 📚 Topics
 
-| # | Topic | Description | YouTube Video |
+| # | Topic | Description | YouTube Video/Playlist |
 |---|-------|-------------|---------------|
-| 1 | [<Topic Title>](./<filename>.md) | <Brief 1-line description> | Pending |
+| 1 | [<Topic Title>](./<filename>.md) | <Brief 1-line description> | <YouTube link from Step 6, or "Pending"> |
 
 ---
 
@@ -215,7 +226,7 @@ Generate a course-level README.md with this structure:
 
 ---
 
-> 📺 **Channel:** [AI ML Made Easy](https://www.youtube.com/@aimlmadeeasy)
+> 📺 **Channel:** [AI ML Made Easy](https://www.youtube.com/@DevOpsMadeEasy)
 ```
 
 ### If README.md DOES exist — Update it:
@@ -225,11 +236,11 @@ Generate a course-level README.md with this structure:
 3. Add a new row for the newly created topic README:
    - Derive a human-readable topic title from the filename (e.g., `common_ai_ml_terminology_part01` → `Introduction to Common AI ML Terminology Part 01`)
    - Increment the topic number
-   - Add the link, description, and "Pending" placeholders
+   - Add the link, description, and the YouTube link from Step 6 (or "Pending" if none provided)
 4. Use the Edit tool to insert the new row into the existing table
 5. DO NOT overwrite or remove any existing entries
 
-## Step 8: Confirmation
+## Step 9: Confirmation
 
 After completing all steps, provide a summary to the user:
 

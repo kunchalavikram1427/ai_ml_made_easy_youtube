@@ -13,12 +13,12 @@ A foundational course covering the core concepts of Artificial Intelligence, Mac
 
 ## 📚 Topics
 
-| # | Topic | Description | YouTube Video |
+| # | Topic | Description | YouTube Video/Playlist |
 |---|-------|-------------|---------------|
-| 1 | [AI vs ML vs DL vs GenAI](./AI_vs_ML_vs_DL_vs_GenAI.md) | Understanding the concepts and differences between AI, ML, DL & GenAI | Pending |
-| 2 | [Common AI/ML Terminology — Part 01](./Common_Terms_in_AI_Part01.md) | Models, training data, LLMs, hallucinations, fine-tuning & prompt engineering | Pending |
-| 3 | [Common AI/ML Terminology — Part 02](./Common_Terms_in_AI_Part02.md) | Inference, tokens, embeddings, Transformers, hyperparameters, guardrails & coherence | Pending |
-| 4 | [Common AI/ML Terminology — Part 03](./Common_Terms_in_AI_Part03.md) | RAG, vector databases, MCP, AI Agents, Agentic AI & reasoning | Pending |
+| 1 | [AI vs ML vs DL vs GenAI](./AI_vs_ML_vs_DL_vs_GenAI.md) | Understanding the concepts and differences between AI, ML, DL & GenAI | [Playlist](https://www.youtube.com/playlist?list=PL8klaCXyIuQ4t7spfti1ecSLW_eIEw3nY) |
+| 2 | [Common AI/ML Terminology — Part 01](./Common_Terms_in_AI_Part01.md) | Models, training data, LLMs, hallucinations, fine-tuning & prompt engineering | [Playlist](https://www.youtube.com/playlist?list=PL8klaCXyIuQ4t7spfti1ecSLW_eIEw3nY) |
+| 3 | [Common AI/ML Terminology — Part 02](./Common_Terms_in_AI_Part02.md) | Inference, tokens, embeddings, Transformers, hyperparameters, guardrails & coherence | [Playlist](https://www.youtube.com/playlist?list=PL8klaCXyIuQ4t7spfti1ecSLW_eIEw3nY) |
+| 4 | [Common AI/ML Terminology — Part 03](./Common_Terms_in_AI_Part03.md) | RAG, vector databases, MCP, AI Agents, Agentic AI & reasoning | [Playlist](https://www.youtube.com/playlist?list=PL8klaCXyIuQ4t7spfti1ecSLW_eIEw3nY) |
 
 ---
 
@@ -30,4 +30,4 @@ A foundational course covering the core concepts of Artificial Intelligence, Mac
 
 ---
 
-> 📺 **Channel:** [AI ML Made Easy](https://www.youtube.com/@aimlmadeeasy)
+> 📺 **Channel:** [AI ML Made Easy](https://www.youtube.com/@DevOpsMadeEasy)

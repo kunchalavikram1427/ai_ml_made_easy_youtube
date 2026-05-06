@@ -37,16 +37,14 @@ By completing the courses in this repository, learners will be able to:
 | # | Course | Description | Status |
 |---|--------|-------------|--------|
 | 1 | [AI ML Foundations](courses/ai_ml_foundations/README.md) | Core concepts of AI, ML, DL, and GenAI — the landscape every practitioner needs | Active |
-| 2 | [Model Context Protocol (MCP)](courses/mcp/README.md) | MCP from first principles — servers, tools, resources, and real integration patterns | Active |
-| 3 | [Claude Code](courses/claude_code/README.md) | Using Claude Code for repo navigation, debugging, refactoring, and agent-assisted development | Active |
+| 2 | [Python for AI and Automation](courses/python/README.md) | Python programming from basics to advanced | Active |
 
 ## Repository Structure
 
 ```
 courses/
   ai_ml_foundations/   # Foundational AI/ML concepts and terminology
-  mcp/                 # Model Context Protocol deep-dive
-  claude_code/         # Practical Claude Code workflows
+  python/              # Python programming
 ```
 
 ## How to Use This Repository

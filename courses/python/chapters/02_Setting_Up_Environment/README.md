@@ -1,14 +1,14 @@
-# Video 02: Setting Up the Development Environment
+# Setting Up the Development Environment
 
 ## Overview
 
-Welcome to Video 02 of the Python Programming Course! In this video, we'll set up everything
+In this chapter, we'll set up everything
 you need to write, run, and experiment with Python code. We'll cover installing Python itself,
 choosing and configuring a code editor (VS Code), and most importantly, we'll dive deep into
 **Jupyter Notebooks** and **Google Colab** - two incredibly powerful tools for interactive
 Python development that you'll use throughout this course and your Python journey.
 
-By the end of this video, you'll have a fully functional Python development environment
+By the end of this chapter, you'll have a fully functional Python development environment
 ready on your computer, and you'll be comfortable using Jupyter Notebooks both locally
 and in the cloud with Google Colab.
 
@@ -16,7 +16,7 @@ and in the cloud with Google Colab.
 
 ## Learning Objectives
 
-After completing this video, you will be able to:
+After completing this chapter, you will be able to:
 
 1. Install Python on Windows, macOS, or Linux
 2. Verify your Python and pip installation
@@ -29,13 +29,13 @@ After completing this video, you will be able to:
 9. Work with Google Colab for cloud-based Python development
 10. Mount Google Drive, use GPUs, and share notebooks in Colab
 11. Run your first Python program in multiple environments
-12. Create a basic virtual environment
+12. Understand what virtual environments are (covered in the Virtual Environments & Packages chapter)
 
 ---
 
 ## Prerequisites
 
-- Video 01 (Introduction to Python) - Understanding what Python is and why we're learning it
+- Introduction to Python - Understanding what Python is and why we're learning it
 - A computer (Windows 10+, macOS 10.14+, or Linux)
 - An internet connection (for downloads and Google Colab)
 - A Google account (for Google Colab)
@@ -161,7 +161,7 @@ pyenv local 3.12.0
 ```
 
 > **Note**: For this course, one Python 3.11+ installation is sufficient. We'll revisit
-> version management in later videos.
+> version management in later chapters.
 
 ---
 
@@ -249,7 +249,7 @@ python3 hello.py
 
 ---
 
-## 3. Jupyter Notebooks (MAIN FOCUS)
+## 3. Jupyter Notebooks
 
 ### 3.1 What are Jupyter Notebooks?
 
@@ -401,11 +401,11 @@ From here you can:
 - **File → Save Notebook**: Manual save
 - **Autosave**: Jupyter autosaves every 2 minutes (configurable)
 - **File → Save and Checkpoint**: Create a checkpoint you can revert to
-- **File → Export Notebook As**: Export to .py, .html, .pdf, etc.
+- **File → Save and Export Notebook As**: Export to .py, .html, .pdf, etc.
 
 ---
 
-### 3.4 Cell Types (DETAILED)
+### 3.4 Cell Types
 
 Jupyter Notebooks are composed of **cells**. Each cell is an independent block that can
 contain code, formatted text, or raw content.
@@ -652,7 +652,7 @@ To create: Change cell type to "Raw" in the toolbar or press **R** in Command Mo
 
 ---
 
-### 3.5 Command Mode vs Edit Mode (VERY DETAILED)
+### 3.5 Command Mode vs Edit Mode
 
 Jupyter has two distinct keyboard modes, similar to Vi/Vim editor. Understanding these
 is essential for efficient notebook usage.
@@ -775,7 +775,7 @@ The cell will have a **blue left border**.
 
 ---
 
-### 3.6 Kernel Operations (DETAILED)
+### 3.6 Kernel Operations
 
 #### What is a Kernel?
 
@@ -878,19 +878,10 @@ shortcuts. They are NOT valid Python - they only work in Jupyter/IPython.
 x = 10
 name = "Python"
 my_list = [1, 2, 3]
-%who           # Lists all variables
+%whos           # Detailed variable listing (with types and values)
 %who int       # Lists only int variables
 %who str       # Lists only string variables
 %who list      # Lists only list variables
-
-# %whos - Detailed variable listing (with types and values)
-%whos
-# Output:
-# Variable   Type    Data/Info
-# --------------------------------
-# x          int     10
-# name       str     Python
-# my_list    list    n=3
 
 # %run - Run a .py file
 %run my_script.py
@@ -1074,7 +1065,7 @@ directory = "/home/user"
 
 ---
 
-## 4. Google Colab (DETAILED)
+## 4. Google Colab
 
 ### 4.1 What is Google Colab?
 
@@ -1201,32 +1192,7 @@ files.download('/content/my_model.pkl')
 | **Idle Timeout** | ~90 min | Longer | Longest |
 | **Priority** | Low | High | Highest |
 
-### 4.8 GPU/TPU Runtime Selection
-
-```python
-# Change runtime type:
-# Runtime → Change runtime type → Hardware accelerator
-
-# Options:
-# - None (CPU only)
-# - T4 GPU
-# - A100 GPU (Pro/Pro+)
-# - TPU v2
-
-# Verify GPU is available
-import torch
-print(f"CUDA available: {torch.cuda.is_available()}")
-print(f"GPU Name: {torch.cuda.get_device_name(0)}")
-
-# Or with TensorFlow
-import tensorflow as tf
-print(f"GPUs: {tf.config.list_physical_devices('GPU')}")
-
-# Check GPU memory
-!nvidia-smi
-```
-
-### 4.9 Colab-Specific Features
+### 4.8 Colab-Specific Features
 
 #### Code Snippets Library
 
@@ -1313,7 +1279,7 @@ df.to_csv('/content/drive/MyDrive/intermediate_results.csv')
 - Can generate code, explain code, and fix errors
 - Available in Pro and Pro+ tiers
 
-### 4.10 Colab Keyboard Shortcuts
+### 4.9 Colab Keyboard Shortcuts
 
 | Shortcut | Action |
 |----------|--------|
@@ -1338,7 +1304,7 @@ df.to_csv('/content/drive/MyDrive/intermediate_results.csv')
 | **Ctrl+[** | Dedent |
 | **Ctrl+Shift+P** | Command palette |
 
-### 4.11 When to Use Colab vs Local Jupyter
+### 4.10 When to Use Colab vs Local Jupyter
 
 **Use Google Colab when:**
 - You need GPU/TPU for machine learning
@@ -1444,7 +1410,7 @@ pip install numpy pandas jupyter
 deactivate
 ```
 
-> **Note**: We'll cover virtual environments in detail in Video 20. For now,
+> **Note**: We'll cover virtual environments in detail in the Virtual Environments & Packages chapter. For now,
 > installing packages globally with pip is fine for learning.
 
 ---
@@ -1634,6 +1600,7 @@ This notebook explores basic Python operations.
    drive.mount('/content/drive')
    ```
 3. Check GPU availability:
+   PyTorch is a popular open-source machine learning framework used primarily for developing and training deep learning models. Originally developed by Meta (formerly Facebook), it has become a leading tool for AI researchers and developers due to its flexibility and ease of use.
    ```python
    import torch
    print(f"GPU available: {torch.cuda.is_available()}")
@@ -1759,7 +1726,7 @@ Create a notebook called `my_first_analysis.ipynb` with:
 
 ## Summary
 
-In this video, we covered:
+In this chapter, we covered:
 
 1. **Python Installation** - Downloaded and verified Python 3 on your system
 2. **VS Code Setup** - Installed VS Code with essential Python extensions
@@ -1770,22 +1737,7 @@ In this video, we covered:
 
 **Key Takeaway**: Jupyter Notebooks (locally or via Colab) will be our primary tool
 for learning Python in this course. Master the keyboard shortcuts now - they'll save
-you hours over the coming videos!
+you hours over the coming chapters!
 
 ---
 
-## What's Next?
-
-In **Video 03**, we'll start writing real Python code! We'll cover:
-- Variables and data types
-- Basic operations
-- String manipulation
-- Getting user input
-
-Make sure your environment is set up and working before moving on!
-
----
-
-*Video 02 of 30 | Python Programming Course*
-*Duration: ~45 minutes*
-*Practice Time: ~30 minutes*

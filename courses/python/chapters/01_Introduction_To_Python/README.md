@@ -1,16 +1,16 @@
-# Video 01: Introduction to Python
+# Introduction to Python
 
 ## Overview
 
-Welcome to the very first video of our **30-Video Python Mastery Course**! In this video, we will explore what Python is, why it has become one of the most popular programming languages in the world, and why it is the perfect language for you to learn — whether you are a complete beginner or transitioning from another language.
+Welcome to the course on **Python for AI and Automation**! In this chapter, we will explore what Python is, why it has become one of the most popular programming languages in the world, and why it is the perfect language for you to learn — whether you are a complete beginner or transitioning from another language.
 
-By the end of this video, you will have a solid understanding of Python's history, philosophy, use cases, and how it compares to other programming languages. Most importantly, you will be excited and motivated to continue this journey with us through all 30 videos!
+By the end of this chapter, you will have a solid understanding of Python's history, philosophy, use cases, and how it compares to other programming languages. Most importantly, you will be excited and motivated to continue this journey with us through all chapters!
 
 ---
 
 ## Learning Objectives
 
-By the end of this video, you will be able to:
+By the end of this chapter, you will be able to:
 
 - Explain what Python is and its history
 - Describe why Python is one of the most popular programming languages
@@ -19,15 +19,15 @@ By the end of this video, you will be able to:
 - Explain how Python code is executed (interpreted vs compiled)
 - Recognize career opportunities available to Python developers
 - Write and run your very first Python program ("Hello, World!")
-- Understand what you will learn throughout this 30-video course
+- Understand what you will learn throughout this course
 
 ---
 
 ## Prerequisites
 
-- **None!** This is the very first video in the course.
+- **None!** This is the very first chapter in the course.
 - All you need is curiosity and a willingness to learn.
-- A computer (Windows, macOS, or Linux) — we will set up Python in Video 02.
+- A computer (Windows, macOS, or Linux) — we will set up Python in the next chapter.
 
 ---
 
@@ -444,10 +444,10 @@ Python is a core language in cloud and DevOps:
 
 ### Course Roadmap Preview
 
-Here is what you will learn across all 30 videos in this course:
+Here is what you will learn across all chapters in this course (order may change):
 
-| Video | Topic |
-|-------|-------|
+| Chapter | Topic |
+|---------|-------|
 | 01 | **Introduction to Python** (You are here!) |
 | 02 | Setting Up Python & Development Environment |
 | 03 | Variables, Data Types & Type Conversion |
@@ -554,8 +554,7 @@ This is fantastic for:
 ---
 
 ## Code Examples
-
-All code examples for this video are in the `examples.py` file in this directory.
+You can do this once you have Python installed. Refer to the Setting Up Environment chapter
 
 ### Your First Python Program
 
@@ -637,7 +636,7 @@ string!
 4. **Python is in high demand** — learning Python opens doors to many career paths
 5. **Python has a massive ecosystem** — over 500,000 packages available on PyPI
 6. **Python is actively maintained** — new versions with improvements released annually
-7. **This course will take you from zero to confident** — 30 videos covering everything you need
+7. **This course will take you from zero to confident** — chapters covering everything you need
 
 ---
 
@@ -666,21 +665,10 @@ string!
 - Stack Overflow Developer Survey: https://survey.stackoverflow.co/
 - GitHub Octoverse: https://octoverse.github.com/
 
-### Tools (for next video)
+### Tools
 - VS Code: https://code.visualstudio.com/
 - PyCharm: https://www.jetbrains.com/pycharm/
 - Jupyter Notebook: https://jupyter.org/
-
----
-
-## What's Next?
-
-In **Video 02: Setting Up Python & Development Environment**, we will:
-- Download and install Python 3 on your operating system
-- Set up VS Code as our code editor
-- Configure Python extensions and linting
-- Run our first Python script from the command line
-- Explore the Python REPL in depth
 
 ---
 
@@ -688,10 +676,5 @@ In **Video 02: Setting Up Python & Development Environment**, we will:
 
 - All code examples are in `examples.py` in this directory
 - Feel free to experiment! You cannot break anything by running Python code
-- If you get stuck, re-watch the video or check the resources above
-- Remember: Every expert was once a beginner. You've got this!
 
 ---
-
-*This is Video 01 of 30 in the Python Mastery Course.*
-*Created with care for absolute beginners.*

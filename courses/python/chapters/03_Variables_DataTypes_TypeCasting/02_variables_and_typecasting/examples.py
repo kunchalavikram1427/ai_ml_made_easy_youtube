@@ -90,6 +90,18 @@ print("\n" + "=" * 60)
 print("  TYPE CASTING")
 print("=" * 60)
 
+# --- Implicit Type Conversion (Coercion) ---
+print("\n--- Implicit Casting (Python does it automatically) ---")
+result = 5 + 3.2  # int + float -> float
+print(f"5 + 3.2 = {result} (type: {type(result).__name__})")
+
+result2 = True + True + False  # bool in arithmetic: True=1, False=0
+print(f"True + True + False = {result2} (type: {type(result2).__name__})")
+
+result3 = 10 * True  # int * bool
+print(f"10 * True = {result3} (type: {type(result3).__name__})")
+
+# --- Explicit Type Conversion ---
 # int() conversions
 print("\n--- int() ---")
 print(f"int(3.9) = {int(3.9)}")        # Truncates (not rounds!)
@@ -226,6 +238,87 @@ print(f"\nVariables (snake_case): user_name = '{user_name}'")
 print(f"Constants (UPPER_CASE): MAX_RETRIES = {MAX_RETRIES}")
 print(f"Constants (UPPER_CASE): PI = {PI}")
 print(f"Constants (UPPER_CASE): DATABASE_URL = '{DATABASE_URL}'")
+
+# ============================================================
+# SECTION 8: Variable Scope (Global, Local, LEGB Rule)
+# ============================================================
+print("\n" + "=" * 60)
+print("  VARIABLE SCOPE (LEGB RULE)")
+print("=" * 60)
+
+# Local vs Global — shadowing
+threshold = 30  # Global variable
+
+def monitor_temperature():
+    threshold = 44  # Local — shadows the global
+    print(f"  Inside function (local): threshold = {threshold}")
+
+print(f"\nGlobal threshold: {threshold}")
+monitor_temperature()
+print(f"Global threshold after function call: {threshold}")  # Unchanged!
+
+# Using the 'global' keyword
+counter = 0
+
+def increment():
+    global counter
+    counter += 1
+
+print(f"\ncounter before: {counter}")
+increment()
+increment()
+increment()
+print(f"counter after 3 increments: {counter}")  # 3
+
+# Using 'nonlocal' in nested functions
+def outer():
+    count = 0
+
+    def inner():
+        nonlocal count
+        count += 1
+        return count
+
+    print(f"\n  outer() -> inner() call 1: {inner()}")
+    print(f"  outer() -> inner() call 2: {inner()}")
+    print(f"  outer() -> final count: {count}")
+
+outer()
+
+# LEGB demonstration
+x_scope = "global"
+
+def outer_func():
+    x_scope_e = "enclosing"
+
+    def inner_func():
+        x_scope_l = "local"
+        print(f"\n  LEGB Demo:")
+        print(f"    Local: x_scope_l = '{x_scope_l}'")
+        print(f"    Enclosing: x_scope_e = '{x_scope_e}'")
+        print(f"    Global: x_scope = '{x_scope}'")
+        print(f"    Built-in: len = {len}")
+
+    inner_func()
+
+outer_func()
+
+# ============================================================
+# SECTION 9: del Keyword
+# ============================================================
+print("\n" + "=" * 60)
+print("  del KEYWORD")
+print("=" * 60)
+
+# del keyword — removing variable references
+print("\n--- Deleting variables ---")
+temp_var = 42
+print(f"temp_var = {temp_var}")
+del temp_var
+try:
+    print(temp_var)
+except NameError as e:
+    print(f"After 'del temp_var': {e}")
 
 print("\n" + "=" * 60)
 print("  END OF VARIABLES & TYPECASTING DEMO")

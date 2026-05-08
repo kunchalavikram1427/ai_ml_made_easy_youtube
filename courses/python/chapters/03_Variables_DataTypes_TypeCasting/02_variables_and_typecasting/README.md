@@ -19,6 +19,8 @@ By the end of this lesson, you will be able to:
 - Apply proper variable naming conventions (PEP 8)
 - Use multiple assignment and variable swapping techniques
 - Differentiate between mutable and immutable types
+- Understand variable scope (local, global, LEGB rule) and use `global`/`nonlocal`
+- Delete variables with `del` and understand garbage collection basics
 
 ## Prerequisites
 
@@ -87,6 +89,18 @@ print(sys.getsizeof(name))  # 54 bytes
 
 big_num = 10**100
 print(sys.getsizeof(big_num))  # Much larger! Python handles arbitrary precision
+```
+
+#### Deleting Variables with `del`
+
+You can remove a variable reference using `del`. The object it pointed to will be garbage collected if no other references exist:
+
+```python
+x = 42
+print(x)  # 42
+
+del x
+# print(x)  # NameError: name 'x' is not defined
 ```
 
 ---
@@ -351,6 +365,19 @@ __mangled = "name mangling in classes"
 # __init__, __str__, __repr__
 ```
 
+#### Names to Avoid:
+```python
+# NEVER use these as variable names — they look like numbers in some fonts:
+# l  (lowercase L — looks like 1)
+# O  (uppercase O — looks like 0)
+# I  (uppercase i — looks like l or 1)
+
+# Avoid overly generic names:
+# data, temp, x, thing, stuff, value
+# Instead, use descriptive names:
+# user_data, temperature, x_coordinate, config_value
+```
+
 ---
 
 ### 7. Multiple Assignment and Swapping
@@ -396,6 +423,13 @@ PI = 3.14159265358979
 MAX_CONNECTIONS = 100
 BASE_URL = "https://api.example.com"
 DEBUG = False
+
+# AI/Automation relevant constants
+MAX_RETRIES = 3
+API_TIMEOUT_SECONDS = 30
+MODEL_NAME = "claude-3"
+BATCH_SIZE = 32
+LEARNING_RATE = 0.001
 
 # Python 3.8+ — you can use typing.Final for type checker enforcement
 from typing import Final
@@ -446,6 +480,90 @@ c.append(5)
 print(a)           # [1, 2, 3, 4] — a is NOT affected
 print(a is c)      # False — different objects
 ```
+
+---
+
+### 10. Variable Scope — Global, Local, and the LEGB Rule
+
+Python resolves variable names using the **LEGB rule** (searched in this order):
+
+| Scope | Description | Example |
+|-------|-------------|---------|
+| **L**ocal | Inside the current function | Variables defined in a function |
+| **E**nclosing | Inside enclosing (outer) functions | Nested function accessing outer function's variable |
+| **G**lobal | At the module (file) level | Variables defined at the top level of a `.py` file |
+| **B**uilt-in | Python's built-in names | `print`, `len`, `int`, `True` |
+
+#### Local vs Global Scope
+
+```python
+threshold = 30  # Global variable
+
+def monitor_temperature():
+    threshold = 44  # Local variable — shadows the global!
+    print(f"Inside function: {threshold}")  # 44
+
+monitor_temperature()
+print(f"Outside function: {threshold}")  # 30 — global is unchanged
+```
+
+#### The `global` Keyword
+
+Use `global` to **modify** a global variable from inside a function:
+
+```python
+counter = 0  # Global
+
+def increment():
+    global counter  # Declares we want to modify the global variable
+    counter += 1
+
+increment()
+increment()
+print(counter)  # 2 — global was modified
+```
+
+#### The `nonlocal` Keyword
+
+Use `nonlocal` to modify a variable from an enclosing (outer) function:
+
+```python
+def outer():
+    count = 0  # Enclosing scope variable
+
+    def inner():
+        nonlocal count  # Modify the enclosing variable
+        count += 1
+        print(f"Inner count: {count}")
+
+    inner()  # Inner count: 1
+    inner()  # Inner count: 2
+    print(f"Outer count: {count}")  # 2
+
+outer()
+```
+
+#### LEGB in Action
+
+```python
+x = "global"
+
+def outer():
+    x = "enclosing"
+
+    def inner():
+        x = "local"
+        print(f"inner sees: {x}")  # "local" (L)
+
+    inner()
+    print(f"outer sees: {x}")  # "enclosing" (E)
+
+outer()
+print(f"module sees: {x}")  # "global" (G)
+# print(len)  # <built-in function len> (B)
+```
+
+> **Best Practice:** Avoid excessive use of `global`. It makes code harder to test, debug, and reason about. Prefer passing values as function parameters and returning results.
 
 ---
 
@@ -666,9 +784,11 @@ Numeric types found: [42, 3.14, (2+3j)]
 1. **Variables are references** — they point to objects in memory, they don't "contain" values
 2. **Everything is an object** — even `int`, `bool`, and `None` are objects with `id()` and `type()`
 3. **Dynamic typing** — flexible but requires discipline (consider type hints for larger projects)
-4. **Type casting** — use `int()`, `float()`, `str()`, `bool()` to convert between types
+4. **Type casting** — use `int()`, `float()`, `str()`, `bool()` and collection constructors to convert between types
 5. **Mutable vs Immutable** — understanding this prevents countless bugs with shared references
 6. **Use `isinstance()` over `type()`** — it respects inheritance and is more Pythonic
 7. **Follow PEP 8** — consistent naming makes code readable and professional
+8. **Variable scope matters** — understand the LEGB rule; prefer passing parameters over using `global`
+9. **`del` frees references** — useful for large objects; garbage collector handles the rest
 
 ---

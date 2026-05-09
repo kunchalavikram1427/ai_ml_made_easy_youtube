@@ -499,7 +499,7 @@ print(a is c)      # False — different objects
 
 ---
 
-### 10. Variable Scope — Global, Local, and the LEGB Rule
+### 10. Variable Scope — Global and Local
 
 Python resolves variable names using the **LEGB rule** (searched in this order):
 

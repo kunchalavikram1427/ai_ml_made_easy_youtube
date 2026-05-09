@@ -56,36 +56,3 @@ x, y, z = 1, 2, 3
 print(f"\nBefore: x={x}, y={y}, z={z}")
 x, y, z = z, x, y
 print(f"After x, y, z = z, x, y: x={x}, y={y}, z={z}")
-
-# =============================================================================
-# EXTENDED UNPACKING WITH *
-# =============================================================================
-print("\n--- Extended Unpacking (star operator) ---")
-
-first, *rest = [1, 2, 3, 4, 5]
-print(f"\nfirst, *rest = [1, 2, 3, 4, 5]")
-print(f"  first = {first}")
-print(f"  rest = {rest}")
-
-head, *middle, tail = [1, 2, 3, 4, 5]
-print(f"\nhead, *middle, tail = [1, 2, 3, 4, 5]")
-print(f"  head = {head}")
-print(f"  middle = {middle}")
-print(f"  tail = {tail}")
-
-*beginning, last = [10, 20, 30, 40]
-print(f"\n*beginning, last = [10, 20, 30, 40]")
-print(f"  beginning = {beginning}")
-print(f"  last = {last}")
-
-# Practical example: parsing a log line
-log_line = "2024-01-15 14:30:00 ERROR Connection timeout"
-date, time_, level, *message_parts = log_line.split()
-message = " ".join(message_parts)
-print(f"\nParsing log: '{log_line}'")
-print(f"  date = {date}")
-print(f"  time = {time_}")
-print(f"  level = {level}")
-print(f"  message = {message}")
-
-print("\n" + "=" * 60)

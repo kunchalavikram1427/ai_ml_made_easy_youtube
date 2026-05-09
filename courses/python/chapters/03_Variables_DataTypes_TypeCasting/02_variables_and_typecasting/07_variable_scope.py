@@ -8,7 +8,6 @@ Demonstrates:
 - Variable shadowing
 - The 'global' keyword
 - The 'nonlocal' keyword (nested functions)
-- LEGB rule: Local -> Enclosing -> Global -> Built-in
 - The 'del' keyword
 """
 
@@ -70,40 +69,6 @@ def outer():
 
 outer()
 
-# =============================================================================
-# LEGB RULE DEMONSTRATION
-# =============================================================================
-print("\n" + "-" * 60)
-print("  LEGB RULE: Local -> Enclosing -> Global -> Built-in")
-print("-" * 60)
-
-x_scope = "global"
-
-def outer_func():
-    x_scope_e = "enclosing"
-
-    def inner_func():
-        x_scope_l = "local"
-        print(f"\n  L (Local):    x_scope_l = '{x_scope_l}'")
-        print(f"  E (Enclosing): x_scope_e = '{x_scope_e}'")
-        print(f"  G (Global):   x_scope = '{x_scope}'")
-        print(f"  B (Built-in): len = {len}")
-
-    inner_func()
-
-outer_func()
-
-# Practical example of LEGB
-print("\n--- Practical LEGB Example ---")
-
-name = "Global Vikram"  # Global
-
-def greet():
-    name = "Local Vikram"  # Local shadows Global
-    print(f"  Inside greet(): name = '{name}'")
-
-greet()
-print(f"  Outside greet(): name = '{name}'")
 
 # =============================================================================
 # THE 'del' KEYWORD
@@ -121,14 +86,3 @@ try:
     print(temp_var)
 except NameError as e:
     print(f"After 'del temp_var': {e}")
-
-# del with lists
-print("\n--- Deleting list elements ---")
-my_list = [10, 20, 30, 40, 50]
-print(f"Before: {my_list}")
-del my_list[2]  # Remove element at index 2
-print(f"After del my_list[2]: {my_list}")
-del my_list[1:3]  # Remove slice
-print(f"After del my_list[1:3]: {my_list}")
-
-print("\n" + "=" * 60)

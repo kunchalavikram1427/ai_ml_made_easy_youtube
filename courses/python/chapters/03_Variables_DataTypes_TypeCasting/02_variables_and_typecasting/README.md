@@ -28,6 +28,22 @@ By the end of this lesson, you will be able to:
 - Setting up Environment (Python installed, IDE/editor configured, can run `.py` files)
 - Comments in Python (understanding how to annotate code)
 
+## How to Run the Examples
+
+```bash
+cd courses/python/chapters/03_Variables_DataTypes_TypeCasting/02_variables_and_typecasting
+
+python3 01_variable_explorer.py            # Inspect types, ids, sizes
+python3 02_dynamic_typing.py               # Variables can change type
+python3 03_type_casting.py                 # int(), float(), str(), bool()
+python3 04_multiple_assignment_swapping.py # Tuple unpacking and swap
+python3 05_mutable_vs_immutable.py         # Lists vs tuples, aliasing
+python3 06_naming_conventions.py           # PEP 8 and reserved keywords
+python3 07_variable_scope.py              # LEGB rule, global, nonlocal
+```
+
+Each script is self-contained — run them in any order.
+
 ---
 
 ## Detailed Explanation

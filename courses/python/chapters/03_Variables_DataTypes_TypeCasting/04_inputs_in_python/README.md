@@ -23,6 +23,15 @@ By the end of this lesson, you will be able to:
 - Variables and Typecasting (understanding types and casting)
 - Advanced Printing (output formatting with f-strings)
 
+## How to Run the Examples
+
+```bash
+cd courses/python/chapters/03_Variables_DataTypes_TypeCasting/04_inputs_in_python
+python3 examples.py
+```
+
+This topic uses a single `examples.py` file that demonstrates input patterns with simulated values (non-interactive). Uncomment the interactive sections at the bottom to try `input()` live.
+
 ---
 
 ## Detailed Explanation

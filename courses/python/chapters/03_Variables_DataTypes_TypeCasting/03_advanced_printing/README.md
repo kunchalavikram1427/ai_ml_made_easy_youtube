@@ -24,6 +24,21 @@ By the end of this lesson, you will be able to:
 - Comments in Python (annotating code)
 - Variables and Typecasting (data types, basic variable usage)
 
+## How to Run the Examples
+
+```bash
+cd courses/python/chapters/03_Variables_DataTypes_TypeCasting/03_advanced_printing
+
+python3 01_print_function_params.py   # sep, end, file, flush
+python3 02_percent_formatting.py      # %-formatting (printf-style)
+python3 03_dot_format_method.py       # .format() method
+python3 04_fstrings.py                # f-strings (preferred)
+python3 05_template_strings.py        # Template strings + comparison
+python3 06_special_print_techniques.py # Colors, tables, progress bars
+```
+
+Each script is self-contained — run them in any order.
+
 ---
 
 ## Detailed Explanation

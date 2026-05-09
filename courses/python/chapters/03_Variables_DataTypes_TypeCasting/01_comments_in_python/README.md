@@ -22,6 +22,15 @@ By the end of this lesson, you will be able to:
 - Introduction to Python (understanding what Python is)
 - Setting up Environment (Python installed, can run `.py` files)
 
+## How to Run the Examples
+
+```bash
+cd courses/python/chapters/03_Variables_DataTypes_TypeCasting/01_comments_in_python
+python3 examples.py
+```
+
+This topic uses a single `examples.py` file since all comment concepts are short and flow together naturally.
+
 ---
 
 ## Detailed Explanation

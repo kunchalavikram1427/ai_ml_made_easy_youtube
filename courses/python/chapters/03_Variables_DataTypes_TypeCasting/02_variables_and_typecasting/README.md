@@ -39,7 +39,8 @@ python3 03_type_casting.py                 # int(), float(), str(), bool()
 python3 04_multiple_assignment_swapping.py # Tuple unpacking and swap
 python3 05_mutable_vs_immutable.py         # Lists vs tuples, aliasing
 python3 06_naming_conventions.py           # PEP 8 and reserved keywords
-python3 07_variable_scope.py              # LEGB rule, global, nonlocal
+python3 07_variable_scope.py               # LEGB rule, global, nonlocal
+python3 08_keywords.py                     # Lists keywords
 ```
 
 Each script is self-contained — run them in any order.

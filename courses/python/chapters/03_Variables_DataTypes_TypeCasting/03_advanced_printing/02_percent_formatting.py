@@ -60,11 +60,19 @@ print("With prefix: 0x%x, 0o%o" % (num, num))
 # PADDING AND ALIGNMENT
 # =============================================================================
 print("\n--- Padding and Alignment ---")
-print("Zero-padded: %05d" % 42)
-print("Zero-padded: %08d" % 42)
-print("Left-aligned: |%-10s|" % "left")
-print("Right-aligned: |%10s|" % "right")
-print("Space-padded int: |%6d|" % 42)
+print("Zero-padded: %05d" % 42) # total width = 5
+print("Zero-padded: %08d" % 42) # total width = 8
+print("Left-aligned: |%-10s|" % "left") # width = 10
+print("Right-aligned: |%10s|" % "right") # width = 10
+print("Space-padded int: |%6d|" % 42) # width = 6
+
+# Float formatting
+print("\n--- Floating Point Formatting ---")
+print("Default float: %f" % 7.2)
+print("Two decimals: %.2f" % 7.2)
+print("Width 6, 2 decimals: |%6.2f|" % 7.2) # total width = 6, 2 decimal places
+print("Width 7, 2 decimals: |%7.2f|" % 7.2) # total width = 7, 2 decimal places
+print("Zero-padded float: |%07.2f|" % 7.2) # total width = 7, 2 decimal places, zero-padded
 
 # =============================================================================
 # WIDTH AND PRECISION COMBINED

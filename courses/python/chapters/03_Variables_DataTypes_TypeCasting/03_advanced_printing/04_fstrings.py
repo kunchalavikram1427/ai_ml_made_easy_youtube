@@ -9,9 +9,7 @@ Demonstrates:
 - Number formatting (decimals, commas, scientific)
 - Binary/Hex formatting
 - Alignment and padding
-- Debug mode (f"{x=}")  — Python 3.8+
 - Date/time formatting
-- repr vs str (!r vs !s)
 """
 
 from datetime import datetime
@@ -104,42 +102,17 @@ items = [("Coffee", 4.50), ("Sandwich", 8.99), ("Cake", 12.00), ("Smoothie", 6.7
 for item, price in items:
     print(f"  {item:<12} ${price:>6.2f}")
 
-# =============================================================================
-# DEBUG MODE (Python 3.8+) — f"{x=}"
-# =============================================================================
-print(f"\n--- Debug mode (= syntax) ---")
-x = 10
-y = 20
-print(f"{x=}, {y=}, {x+y=}")
-print(f"{name=}, {age=}")
-print(f"{len(items)=}")
-print(f"{pi=:.4f}")
 
 # =============================================================================
 # DATE/TIME FORMATTING
 # =============================================================================
 print(f"\n--- Date/Time formatting ---")
-now = datetime.now()
-print(f"ISO format: {now:%Y-%m-%d}")
-print(f"Time: {now:%H:%M:%S}")
-print(f"Readable: {now:%B %d, %Y}")
-print(f"Short: {now:%b %d, %Y %I:%M %p}")
-print(f"Day of week: {now:%A}")
-
-# =============================================================================
-# repr vs str (!r vs !s)
-# =============================================================================
-print(f"\n--- repr vs str ---")
-text = "Hello\tWorld"
-path = "C:\\Users\\file.txt"
-print(f"str:  {text}")
-print(f"repr: {text!r}")
-print(f"str:  {path}")
-print(f"repr: {path!r}")
-
-# Useful for debugging — shows exact string content
-data = "  spaces  "
-print(f"\ndata = {data!r}  (shows hidden spaces)")
+now = datetime.now()  # Get current date and time
+print(f"ISO format: {now:%Y-%m-%d}")  # YYYY-MM-DD format
+print(f"Time: {now:%H:%M:%S}")  # HH:MM:SS format (24-hour)
+print(f"Readable: {now:%B %d, %Y}")  # Full month name, day, year
+print(f"Short: {now:%b %d, %Y %I:%M %p}")  # Abbreviated month, 12-hour time with AM/PM
+print(f"Day of week: {now:%A}")  # Full day name
 
 print(f"\n" + "=" * 70)
 print(f"TIP: f-strings are the fastest and most readable. Use them by default!")

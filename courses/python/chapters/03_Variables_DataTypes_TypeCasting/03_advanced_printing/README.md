@@ -242,15 +242,6 @@ f"{now:%Y-%m-%d %H:%M:%S}"       # 2024-01-15 14:30:00
 f"{now:%B %d, %Y}"               # January 15, 2024
 ```
 
-#### repr() in f-strings
-
-```python
-text = "Hello\tWorld"
-f"{text}"       # Hello	World    (str)
-f"{text!r}"     # 'Hello\tWorld'  (repr)
-f"{text!a}"     # 'Hello\tWorld'  (ascii)
-```
-
 #### Multiline f-strings
 
 ```python

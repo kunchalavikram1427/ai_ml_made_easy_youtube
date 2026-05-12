@@ -6,7 +6,6 @@ Run: python3 05_template_strings.py
 Demonstrates:
 - Basic Template substitution
 - safe_substitute() (no KeyError on missing keys)
-- Security advantage over f-strings/.format()
 - When to use Template strings
 - Comparison of all 4 formatting methods
 """
@@ -47,38 +46,6 @@ try:
 except KeyError as e:
     print(f"substitute() raised KeyError: {e}")
 
-# =============================================================================
-# SECURITY ADVANTAGE
-# =============================================================================
-print("\n--- Security advantage ---")
-print("""
-  Why use Template strings?
-
-  f-strings and .format() can execute arbitrary expressions:
-    f"{__import__('os').system('rm -rf /')}"  # DANGEROUS!
-    "{0.__class__.__mro__}".format(obj)        # Info leak!
-
-  Template strings ONLY do simple $variable replacement.
-  No expressions, no attribute access, no method calls.
-
-  Use Template when the format string comes from UNTRUSTED input
-  (user-provided templates, config files, etc.)
-""")
-
-# Safe: user-provided template
-user_template = "$name has $count items in their cart"
-t = Template(user_template)
-print(t.substitute(name="Vikram", count=5))
-
-# Even if user tries injection, Template is safe
-malicious_template = "$name.__class__.__mro__"
-t = Template(malicious_template)
-# This just treats it as a variable name — no code execution
-try:
-    result = t.substitute(name="Vikram")
-    print(f"  Malicious attempt result: {result}")
-except (KeyError, ValueError) as e:
-    print(f"  Safely blocked: {e}")
 
 # =============================================================================
 # COMPARISON: ALL 4 FORMATTING METHODS

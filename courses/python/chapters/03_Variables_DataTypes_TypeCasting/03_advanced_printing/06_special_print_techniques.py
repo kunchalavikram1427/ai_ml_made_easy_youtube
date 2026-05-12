@@ -18,6 +18,19 @@ from pprint import pprint
 # =============================================================================
 # ANSI COLOR CODES
 # =============================================================================
+
+"""
+ANSI stands for American National Standards Institute. It’s an organization that defines standards so different systems and technologies can work consistently.
+ANSI escape codes are a standard way to control text formatting in terminals. They allow you to change text color, background color, and apply styles like bold or underline. 
+These codes are widely supported in modern terminal emulators, making them a popular choice for adding visual flair to command-line applications.
+
+What is \033[91m?
+\033 → Escape character (octal for 27, same as \x1b)
+[ → Starts the control sequence
+91 → Code for a specific style (here: bright red text)
+m → Means “apply graphic mode” (color/style)
+"""
+
 print("=" * 70)
 print("  SPECIAL PRINT TECHNIQUES")
 print("=" * 70)
@@ -121,7 +134,7 @@ total = 20
 for i in range(total + 1):
     percent = (i / total) * 100
     bar = "#" * i + "." * (total - i)
-    sleep(0.1)
+    sleep(0.1) 
     print(f"\r  [{bar}] {percent:.0f}%", end="", flush=True)
 print()
 

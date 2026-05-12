@@ -4,7 +4,7 @@
 
 Interactive programs need to communicate with users — and that means accepting input. Python's built-in `input()` function is your primary tool for getting data from users at runtime. While it looks simple on the surface, handling user input properly involves type casting (since `input()` always returns a string), validation (users will enter unexpected things), and patterns for accepting multiple values efficiently.
 
-In this lesson, we'll master the `input()` function, learn common input patterns, build robust input validation, and explore lower-level I/O with `sys.stdin` for more advanced use cases.
+In this lesson, we'll master the `input()` function, learn common input patterns, and build robust input validation.
 
 ## Learning Objectives
 
@@ -14,7 +14,6 @@ By the end of this lesson, you will be able to:
 - Type cast user input to integers, floats, and other types
 - Accept multiple values on a single line using `split()` and `map()`
 - Build input validation loops with error handling
-- Use `sys.stdin` for piped/redirected input
 - Create interactive command-line programs
 
 ## Prerequisites
@@ -27,10 +26,15 @@ By the end of this lesson, you will be able to:
 
 ```bash
 cd courses/python/chapters/03_Variables_DataTypes_TypeCasting/04_inputs_in_python
-python3 examples.py
+python3 01_basic_input.py
+python3 02_type_casting_input.py
+python3 03_multiple_inputs.py
+python3 04_input_validation.py
+python3 05_common_input_patterns.py
+python3 06_interactive_calculator.py
 ```
 
-This topic uses a single `examples.py` file that demonstrates input patterns with simulated values (non-interactive). Uncomment the interactive sections at the bottom to try `input()` live.
+Each file covers one topic and can be run independently. Files 01-05 use simulated values (non-interactive) with "Try It Yourself" sections you can uncomment. File 06 is fully interactive.
 
 ---
 
@@ -254,45 +258,7 @@ print(f"\nYou entered:\n{text}")
 
 ---
 
-### 6. `sys.stdin` — Advanced Input
-
-For scripts that receive piped or redirected input (not interactive):
-
-```python
-import sys
-
-# Reading from piped input
-# Usage: echo "hello world" | python3 script.py
-# Or: cat data.txt | python3 script.py
-
-for line in sys.stdin:
-    processed = line.strip().upper()
-    print(processed)
-```
-
-#### `sys.stdout.write()` vs `print()`
-
-```python
-import sys
-
-# sys.stdout.write() — no auto-newline, returns character count
-sys.stdout.write("Hello\n")      # Must add \n yourself
-sys.stdout.write("World\n")
-
-# Equivalent to:
-print("Hello")
-print("World")
-```
-
-#### When to Use `sys.stdin`:
-- Processing piped data (`cat file.txt | python3 script.py`)
-- Reading from redirected files (`python3 script.py < input.txt`)
-- Building Unix-style filter programs
-- When you need more control than `input()` provides
-
----
-
-### 7. Putting It All Together: Interactive Programs
+### 6. Putting It All Together: Interactive Programs
 
 ```python
 """
@@ -473,7 +439,6 @@ def get_unit():
 ## Resources & References
 
 - **Python Official Docs — input():** https://docs.python.org/3/library/functions.html#input
-- **Python Official Docs — sys.stdin:** https://docs.python.org/3/library/sys.html#sys.stdin
 - **Real Python — Python Input/Output:** https://realpython.com/python-input-output/
 - **Python Official Docs — getpass:** https://docs.python.org/3/library/getpass.html
 - **Programiz — Python Input:** https://www.programiz.com/python-programming/input-output-import
@@ -487,8 +452,7 @@ def get_unit():
 3. **`split()` + `map()`** for multiple values on one line
 4. **Always validate** — wrap input in `try/except` and check ranges
 5. **`while True` + `break`** is the standard input validation pattern
-6. **`sys.stdin`** for piped/redirected input in scripts
-7. **`.strip()`** removes accidental whitespace from user input
-8. **Default values** with `input(...) or "default"` pattern
+6. **`.strip()`** removes accidental whitespace from user input
+7. **Default values** with `input(...) or "default"` pattern
 
 ---

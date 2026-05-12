@@ -82,6 +82,9 @@ print(f"+{'-'*14}+{'-'*7}+{'-'*14}+{'-'*8}+")
 # =============================================================================
 # PRETTY PRINTING (pprint)
 # =============================================================================
+
+# pprint is a built-in module used to display complex data structures (like dictionaries, lists, JSON-like objects) in a more readable, well-formatted way.
+
 print(f"\n--- Pretty Printing (pprint) ---")
 complex_data = {
     "name": "Vikram",
@@ -101,12 +104,14 @@ pprint(complex_data, width=50, indent=2)
 # =============================================================================
 # PROGRESS BAR
 # =============================================================================
+from time import sleep
 print(f"\n--- Progress Bar Demo ---")
 total = 30
 for i in range(total + 1):
     percent = (i / total) * 100
     filled = int(i * 30 / total)
     bar = "█" * filled + "░" * (30 - filled)
+    sleep(0.1)
     print(f"\r  [{bar}] {percent:5.1f}%", end="", flush=True)
 print()  # Final newline
 
@@ -116,6 +121,7 @@ total = 20
 for i in range(total + 1):
     percent = (i / total) * 100
     bar = "#" * i + "." * (total - i)
+    sleep(0.1)
     print(f"\r  [{bar}] {percent:.0f}%", end="", flush=True)
 print()
 

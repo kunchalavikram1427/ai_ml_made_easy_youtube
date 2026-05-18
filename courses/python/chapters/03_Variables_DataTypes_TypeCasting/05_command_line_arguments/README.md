@@ -462,9 +462,6 @@ python3 pipeline.py export output.json --format json --verbose
 
 - **Python Official Docs — sys.argv:** https://docs.python.org/3/library/sys.html#sys.argv
 - **Python Official Docs — argparse:** https://docs.python.org/3/library/argparse.html
-- **Real Python — Command Line Interfaces:** https://realpython.com/command-line-interfaces-python-argparse/
-- **GeeksforGeeks — Command Line Arguments in Python:** https://www.geeksforgeeks.org/python/command-line-arguments-in-python/
-
 ---
 
 ## Key Takeaways

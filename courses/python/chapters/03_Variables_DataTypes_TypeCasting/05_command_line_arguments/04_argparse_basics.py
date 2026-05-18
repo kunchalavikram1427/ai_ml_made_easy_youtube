@@ -22,8 +22,8 @@ Demonstrates:
 import argparse
 
 
-def create_parser():
-    """Create and configure the argument parser."""
+def main():
+    # Create the argument parser
     parser = argparse.ArgumentParser(
         description="A friendly greeting program",
         epilog="Example: %(prog)s Vikram -g 'Good morning' --shout -n 3"
@@ -62,11 +62,7 @@ def create_parser():
         help="Use formal greeting style"
     )
 
-    return parser
-
-
-def main():
-    parser = create_parser()
+    # Parse the arguments
     args = parser.parse_args()
 
     # Build the greeting message

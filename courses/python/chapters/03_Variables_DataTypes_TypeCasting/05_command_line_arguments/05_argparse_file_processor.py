@@ -3,7 +3,7 @@ argparse File Processor — Types, Defaults, and Validation
 ===========================================================
 Run: python3 05_argparse_file_processor.py input.txt
      python3 05_argparse_file_processor.py input.txt -o output.txt -n 50 --verbose
-     python3 05_argparse_file_processor.py data.csv --format csv --encoding utf-8
+     python3 05_argparse_file_processor.py data.csv --format csv
      python3 05_argparse_file_processor.py --help
 
 A more realistic example showing how argparse handles:
@@ -32,7 +32,7 @@ def create_parser():
         epilog="Examples:\n"
                "  %(prog)s data.txt\n"
                "  %(prog)s data.txt -o result.txt -n 100 --verbose\n"
-               "  %(prog)s log.csv --format csv --encoding latin-1",
+               "  %(prog)s log.csv --format csv",
         formatter_class=argparse.RawDescriptionHelpFormatter
     )
 
@@ -63,13 +63,6 @@ def create_parser():
         choices=["text", "csv", "json"],
         default="text",
         help="Input file format (default: %(default)s)"
-    )
-
-    # Optional: encoding
-    parser.add_argument(
-        "--encoding",
-        default="utf-8",
-        help="File encoding (default: %(default)s)"
     )
 
     # Optional: separator for CSV
@@ -133,7 +126,6 @@ def process_file(args):
         print(f"    Input:     {args.input_file}")
         print(f"    Output:    {args.output or '(stdout)'}")
         print(f"    Format:    {args.format}")
-        print(f"    Encoding:  {args.encoding}")
         print(f"    Lines:     {args.lines or 'all'}")
         print(f"    Separator: {repr(args.separator)}")
         print(f"    No header: {args.no_header}")
@@ -142,7 +134,7 @@ def process_file(args):
 
     # Simulate processing steps
     steps = [
-        f"Opening '{args.input_file}' with encoding '{args.encoding}'",
+        f"Opening '{args.input_file}'",
         f"Parsing as {args.format.upper()} format",
     ]
 

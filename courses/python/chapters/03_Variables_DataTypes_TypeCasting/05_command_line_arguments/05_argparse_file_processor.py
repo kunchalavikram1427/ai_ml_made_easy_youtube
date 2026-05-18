@@ -1,10 +1,10 @@
 """
 argparse File Processor — Types, Defaults, and Validation
 ===========================================================
-Run: python3 06_argparse_file_processor.py input.txt
-     python3 06_argparse_file_processor.py input.txt -o output.txt -n 50 --verbose
-     python3 06_argparse_file_processor.py data.csv --format csv --encoding utf-8
-     python3 06_argparse_file_processor.py --help
+Run: python3 05_argparse_file_processor.py input.txt
+     python3 05_argparse_file_processor.py input.txt -o output.txt -n 50 --verbose
+     python3 05_argparse_file_processor.py data.csv --format csv --encoding utf-8
+     python3 05_argparse_file_processor.py --help
 
 A more realistic example showing how argparse handles:
 - Required vs optional arguments

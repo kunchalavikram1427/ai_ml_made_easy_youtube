@@ -1,11 +1,11 @@
 """
 argparse Choices, Mutually Exclusive Groups, and nargs
 ========================================================
-Run: python3 07_argparse_choices.py --format json --level 2
-     python3 07_argparse_choices.py --format csv --output table
-     python3 07_argparse_choices.py --numbers 1 2 3 4 5
-     python3 07_argparse_choices.py --tags python cli argparse
-     python3 07_argparse_choices.py --help
+Run: python3 06_argparse_choices.py --format json --level 2
+     python3 06_argparse_choices.py --format csv --output table
+     python3 06_argparse_choices.py --numbers 1 2 3 4 5
+     python3 06_argparse_choices.py --tags python cli argparse
+     python3 06_argparse_choices.py --help
 
 Demonstrates advanced argparse features:
 - choices= to restrict values to a set

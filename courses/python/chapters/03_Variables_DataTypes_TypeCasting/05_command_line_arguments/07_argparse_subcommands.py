@@ -1,12 +1,12 @@
 """
 argparse Subcommands — Building Git-Style CLIs
 ================================================
-Run: python3 08_argparse_subcommands.py add file1.py file2.py
-     python3 08_argparse_subcommands.py commit -m "Initial commit"
-     python3 08_argparse_subcommands.py log --count 5
-     python3 08_argparse_subcommands.py status --short
-     python3 08_argparse_subcommands.py --help
-     python3 08_argparse_subcommands.py add --help
+Run: python3 07_argparse_subcommands.py add file1.py file2.py
+     python3 07_argparse_subcommands.py commit -m "Initial commit"
+     python3 07_argparse_subcommands.py log --count 5
+     python3 07_argparse_subcommands.py status --short
+     python3 07_argparse_subcommands.py --help
+     python3 07_argparse_subcommands.py add --help
 
 Demonstrates building CLI tools with multiple subcommands,
 similar to how git, docker, and kubectl work.

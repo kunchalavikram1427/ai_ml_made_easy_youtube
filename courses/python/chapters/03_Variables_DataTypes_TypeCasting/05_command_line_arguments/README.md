@@ -12,7 +12,6 @@ By the end of this lesson, you will be able to:
 
 - Access command line arguments using `sys.argv`
 - Understand the structure of `sys.argv` (script name + arguments)
-- Parse Unix-style options with the `getopt` module
 - Build professional CLIs with `argparse` including help messages, types, and defaults
 - Add positional arguments, optional flags, and mutually exclusive groups
 - Choose the right approach based on your use case
@@ -32,14 +31,13 @@ cd courses/python/chapters/03_Variables_DataTypes_TypeCasting/05_command_line_ar
 python3 01_sys_argv_basics.py hello world 42
 python3 02_sys_argv_adder.py 5 10 15 20
 python3 03_sys_argv_flags.py --verbose data.csv --output result.txt
-python3 04_getopt_demo.py -i data.csv -o result.json -v
-python3 05_argparse_basics.py Vikram -g "Good morning" --shout
-python3 06_argparse_file_processor.py input.txt -o output.txt -n 50 --verbose
-python3 07_argparse_choices.py --format json --level 2 --numbers 10 20 30
-python3 08_argparse_subcommands.py commit -m "Initial commit"
+python3 04_argparse_basics.py Vikram -g "Good morning" --shout
+python3 05_argparse_file_processor.py input.txt -o output.txt -n 50 --verbose
+python3 06_argparse_choices.py --format json --level 2 --numbers 10 20 30
+python3 07_argparse_subcommands.py commit -m "Initial commit"
 ```
 
-Each script is standalone. Use `--help` with argparse scripts (05-08) to see auto-generated usage.
+Each script is standalone. Use `--help` with argparse scripts (04-07) to see auto-generated usage.
 
 ---
 
@@ -120,72 +118,7 @@ python3 add.py 5 10
 
 ---
 
-### 3. `getopt` Module — Unix-Style Options
-
-The `getopt` module parses command line options in the traditional Unix style (short flags like `-h` and long flags like `--help`):
-
-```python
-import sys
-import getopt
-
-def main(argv):
-    input_file = ""
-    output_file = ""
-    verbose = False
-
-    try:
-        opts, args = getopt.getopt(argv, "hi:o:v", ["help", "input=", "output=", "verbose"])
-    except getopt.GetoptError as e:
-        print(f"Error: {e}")
-        sys.exit(2)
-
-    for opt, arg in opts:
-        if opt in ("-h", "--help"):
-            print("Usage: script.py -i <inputfile> -o <outputfile> [-v]")
-            sys.exit()
-        elif opt in ("-i", "--input"):
-            input_file = arg
-        elif opt in ("-o", "--output"):
-            output_file = arg
-        elif opt in ("-v", "--verbose"):
-            verbose = True
-
-    print(f"Input: {input_file}")
-    print(f"Output: {output_file}")
-    print(f"Verbose: {verbose}")
-
-if __name__ == "__main__":
-    main(sys.argv[1:])
-```
-
-#### Understanding `getopt` Syntax:
-```python
-# Short options: "hi:o:v"
-#   h  -> -h (no value expected)
-#   i: -> -i <value> (colon means value required)
-#   o: -> -o <value>
-#   v  -> -v (no value expected)
-
-# Long options: ["help", "input=", "output=", "verbose"]
-#   "help"    -> --help (no value)
-#   "input="  -> --input <value> (= means value required)
-#   "output=" -> --output <value>
-#   "verbose" -> --verbose (no value)
-```
-
-```bash
-python3 script.py -i data.csv -o result.json -v
-python3 script.py --input data.csv --output result.json --verbose
-```
-
-#### When to Use `getopt`:
-- Simple scripts with few options
-- When you want Unix-style flag parsing without full argparse overhead
-- Porting scripts from C/Shell that used getopt
-
----
-
-### 4. `argparse` Module — The Recommended Approach
+### 3. `argparse` Module — The Recommended Approach
 
 `argparse` is the most powerful and Pythonic way to handle command line arguments. It provides automatic help generation, type checking, default values, and clear error messages.
 
@@ -321,25 +254,24 @@ args = parser.parse_args()
 
 ---
 
-### 5. Comparing the Approaches
+### 4. Comparing the Approaches
 
-| Feature | `sys.argv` | `getopt` | `argparse` |
-|---------|-----------|----------|------------|
-| Complexity | Minimal | Low | Medium |
-| Help messages | Manual | Manual | Automatic |
-| Type checking | Manual | Manual | Built-in |
-| Default values | Manual | Manual | Built-in |
-| Error handling | Manual | Basic | Built-in |
-| Best for | Quick scripts | Simple flags | Production CLIs |
+| Feature | `sys.argv` | `argparse` |
+|---------|-----------|------------|
+| Complexity | Minimal | Medium |
+| Help messages | Manual | Automatic |
+| Type checking | Manual | Built-in |
+| Default values | Manual | Built-in |
+| Error handling | Manual | Built-in |
+| Best for | Quick scripts | Production CLIs |
 
 #### Rules of Thumb:
 - **1-2 simple args** → `sys.argv`
-- **Unix-style flags in simple scripts** → `getopt`
 - **Anything more complex** → `argparse` (recommended default)
 
 ---
 
-### 6. Best Practices
+### 5. Best Practices
 
 ```python
 import argparse
@@ -531,7 +463,6 @@ python3 pipeline.py export output.json --format json --verbose
 
 - **Python Official Docs — sys.argv:** https://docs.python.org/3/library/sys.html#sys.argv
 - **Python Official Docs — argparse:** https://docs.python.org/3/library/argparse.html
-- **Python Official Docs — getopt:** https://docs.python.org/3/library/getopt.html
 - **Real Python — Command Line Interfaces:** https://realpython.com/command-line-interfaces-python-argparse/
 - **GeeksforGeeks — Command Line Arguments in Python:** https://www.geeksforgeeks.org/python/command-line-arguments-in-python/
 
@@ -541,11 +472,10 @@ python3 pipeline.py export output.json --format json --verbose
 
 1. **`sys.argv`** is a list of strings — `[0]` is the script name, `[1:]` are arguments
 2. **All command line arguments are strings** — cast to int/float as needed
-3. **`getopt`** handles Unix-style short (`-h`) and long (`--help`) options
-4. **`argparse` is the recommended approach** — auto-generates help, validates types, sets defaults
-5. **Positional arguments** are required; **optional arguments** use `--` prefix
-6. **`action="store_true"`** creates boolean flags (default False, True when present)
-7. **Always validate arguments early** and provide clear error messages
-8. **Use `if __name__ == "__main__"`** so scripts with argparse remain importable
+3. **`argparse` is the recommended approach** — auto-generates help, validates types, sets defaults
+4. **Positional arguments** are required; **optional arguments** use `--` prefix
+5. **`action="store_true"`** creates boolean flags (default False, True when present)
+6. **Always validate arguments early** and provide clear error messages
+7. **Use `if __name__ == "__main__"`** so scripts with argparse remain importable
 
 ---

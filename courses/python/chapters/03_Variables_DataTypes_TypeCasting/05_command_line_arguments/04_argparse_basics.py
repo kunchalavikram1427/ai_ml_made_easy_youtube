@@ -1,10 +1,10 @@
 """
 argparse Basics — The Recommended Approach
 ============================================
-Run: python3 05_argparse_basics.py Vikram
-     python3 05_argparse_basics.py Vikram -g "Good morning"
-     python3 05_argparse_basics.py Vikram --greeting Hey --shout -n 3
-     python3 05_argparse_basics.py --help
+Run: python3 04_argparse_basics.py Vikram
+     python3 04_argparse_basics.py Vikram -g "Good morning"
+     python3 04_argparse_basics.py Vikram --greeting Hey --shout -n 3
+     python3 04_argparse_basics.py --help
 
 argparse is the recommended way to handle command line arguments in Python.
 It provides automatic help generation, type checking, default values,

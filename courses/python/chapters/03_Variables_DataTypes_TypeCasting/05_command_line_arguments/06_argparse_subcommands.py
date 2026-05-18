@@ -1,12 +1,12 @@
 """
 argparse Subcommands — Building Git-Style CLIs
 ================================================
-Run: python3 07_argparse_subcommands.py add file1.py file2.py
-     python3 07_argparse_subcommands.py commit -m "Initial commit"
-     python3 07_argparse_subcommands.py log --count 5
-     python3 07_argparse_subcommands.py status --short
-     python3 07_argparse_subcommands.py --help
-     python3 07_argparse_subcommands.py add --help
+Run: python3 06_argparse_subcommands.py add file1.py file2.py
+     python3 06_argparse_subcommands.py commit -m "Initial commit"
+     python3 06_argparse_subcommands.py log --count 5
+     python3 06_argparse_subcommands.py status --short
+     python3 06_argparse_subcommands.py --help
+     python3 06_argparse_subcommands.py add --help
 
 Demonstrates building CLI tools with multiple subcommands,
 similar to how git, docker, and kubectl work.
@@ -15,7 +15,7 @@ Demonstrates:
 - add_subparsers() for subcommands
 - Each subcommand with its own arguments
 - Global arguments that work across all subcommands
-- set_defaults(func=...) pattern for routing
+- Routing to handler functions with if/elif
 """
 
 import argparse
@@ -62,7 +62,7 @@ def handle_log(args):
     ]
 
     count = args.count if args.count else len(fake_commits)
-    for i, (hash_, msg, author) in enumerate(fake_commits[:count]):
+    for _, (hash_, msg, author) in enumerate(fake_commits[:count]):
         if args.oneline:
             print(f"    {hash_} {msg}")
         else:
@@ -107,11 +107,10 @@ def handle_status(args):
 
 
 # =============================================================================
-# PARSER SETUP
+# PARSER SETUP & MAIN
 # =============================================================================
 
-def create_parser():
-    """Create the main parser with subcommands."""
+def main():
     # Main parser
     parser = argparse.ArgumentParser(
         description="Mini-Git: A simplified git-like CLI tool (demo)",
@@ -152,7 +151,6 @@ def create_parser():
         action="store_true",
         help="Force add (ignore .gitignore)"
     )
-    add_parser.set_defaults(func=handle_add)
 
     # --- 'commit' subcommand ---
     commit_parser = subparsers.add_parser(
@@ -173,7 +171,6 @@ def create_parser():
         "--author",
         help="Override commit author"
     )
-    commit_parser.set_defaults(func=handle_commit)
 
     # --- 'log' subcommand ---
     log_parser = subparsers.add_parser(
@@ -191,7 +188,6 @@ def create_parser():
         action="store_true",
         help="Show each commit on one line"
     )
-    log_parser.set_defaults(func=handle_log)
 
     # --- 'status' subcommand ---
     status_parser = subparsers.add_parser(
@@ -203,17 +199,8 @@ def create_parser():
         action="store_true",
         help="Show short format"
     )
-    status_parser.set_defaults(func=handle_status)
 
-    return parser
-
-
-# =============================================================================
-# MAIN
-# =============================================================================
-
-def main():
-    parser = create_parser()
+    # Parse and execute
     args = parser.parse_args()
 
     # If no subcommand given, show help
@@ -225,8 +212,15 @@ def main():
     print(f"  MINI-GIT: '{args.command}' command")
     print("=" * 50)
 
-    # Call the appropriate handler
-    args.func(args)
+    # Call the appropriate handler based on the subcommand
+    if args.command == "add":
+        handle_add(args)
+    elif args.command == "commit":
+        handle_commit(args)
+    elif args.command == "log":
+        handle_log(args)
+    elif args.command == "status":
+        handle_status(args)
 
     print("\n" + "=" * 50)
 

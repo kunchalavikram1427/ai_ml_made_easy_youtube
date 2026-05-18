@@ -13,7 +13,7 @@ By the end of this lesson, you will be able to:
 - Access command line arguments using `sys.argv`
 - Understand the structure of `sys.argv` (script name + arguments)
 - Build professional CLIs with `argparse` including help messages, types, and defaults
-- Add positional arguments, optional flags, and mutually exclusive groups
+- Add positional arguments, optional flags, and subcommands
 - Choose the right approach based on your use case
 
 ## Prerequisites
@@ -33,11 +33,10 @@ python3 02_sys_argv_adder.py 5 10 15 20
 python3 03_sys_argv_flags.py --verbose data.csv --output result.txt
 python3 04_argparse_basics.py Vikram -g "Good morning" --shout
 python3 05_argparse_file_processor.py input.txt -o output.txt -n 50 --verbose
-python3 06_argparse_choices.py --format json --level 2 --numbers 10 20 30
-python3 07_argparse_subcommands.py commit -m "Initial commit"
+python3 06_argparse_subcommands.py commit -m "Initial commit"
 ```
 
-Each script is standalone. Use `--help` with argparse scripts (04-07) to see auto-generated usage.
+Each script is standalone. Use `--help` with argparse scripts (04-06) to see auto-generated usage.
 
 ---
 

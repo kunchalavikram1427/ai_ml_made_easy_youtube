@@ -50,13 +50,7 @@ def main():
     print(f"  Sum:     {sum(numbers)}")
     print(f"  Average: {sum(numbers) / len(numbers):.2f}")
     print(f"  Min:     {min(numbers)}")
-    print(f"  Max:     {max(numbers)}")
-    print(f"  Range:   {max(numbers) - min(numbers)}")
-
-    # Show as integers if all are whole numbers
-    if all(n == int(n) for n in numbers):
-        int_numbers = [int(n) for n in numbers]
-        print(f"\n  (All whole numbers: {int_numbers})")
+    print(f"  Max:     {max(numbers)}\n")
 
     print("=" * 40)
 

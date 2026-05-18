@@ -33,7 +33,7 @@ print("=" * 60)
 
 print("\n  Each argument and its type:")
 for i, arg in enumerate(sys.argv):
-    print(f"    sys.argv[{i}] = {arg!r:<20} type = {type(arg).__name__}")
+    print(f"    sys.argv[{i}] = {arg!r:<25} type = {type(arg).__name__}")
 
 # =============================================================================
 # SECTION 3: ACCESSING INDIVIDUAL ARGUMENTS

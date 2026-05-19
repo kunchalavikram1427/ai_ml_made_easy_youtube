@@ -1,7 +1,7 @@
 """
 Full-Featured Terminal Calculator
 ==================================
-Run: python3 calculator.py
+Run: python3 05_calculator.py
 
 Features:
 - Basic arithmetic (+, -, *, /, //, %, **)
@@ -169,7 +169,6 @@ def precedence_demo():
         ("2 ** 3 ** 2", 2 ** 3 ** 2),        # Right-associative!
         ("(2 ** 3) ** 2", (2 ** 3) ** 2),
         ("-2 ** 2", -2 ** 2),                  # Surprising!
-        ("(-2) ** 2", (-2) ** 2),
         ("10 - 3 - 2", 10 - 3 - 2),          # Left-associative
         ("10 - (3 - 2)", 10 - (3 - 2)),
         ("True + True + True", True + True + True),  # Booleans are ints!

@@ -26,6 +26,22 @@ By the end of this lesson, you'll be comfortable creating, manipulating, and for
 - Keywords & Identifiers (Python reserved words)
 - Operators (arithmetic, comparison, and logical operators)
 
+## How to Run the Examples
+
+```bash
+cd courses/python/chapters/05_Strings_And_Methods
+
+python3 01_string_creation_and_indexing.py
+python3 02_string_methods.py
+python3 03_string_formatting.py
+python3 04_string_operations.py
+python3 password_generator.py
+```
+
+Each script is standalone and prints its output directly. The `password_generator.py` is an interactive mini-project.
+
+---
+
 ## Detailed Explanation
 
 ### 1. String Creation

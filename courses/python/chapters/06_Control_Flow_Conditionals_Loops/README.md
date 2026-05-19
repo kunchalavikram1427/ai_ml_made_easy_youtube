@@ -28,6 +28,22 @@ By mastering control flow, you'll be able to write programs that respond to diff
 - Operators (especially comparison and logical operators)
 - Strings & Methods (for working with string data in conditions)
 
+## How to Run the Examples
+
+```bash
+cd courses/python/chapters/06_Control_Flow_Conditionals_Loops
+
+python3 01_conditionals.py
+python3 02_for_loops.py
+python3 03_while_loops_and_control.py
+python3 countdown_timer.py
+python3 quiz_game.py
+```
+
+Each script is standalone and prints its output directly. The `countdown_timer.py` and `quiz_game.py` are interactive mini-projects.
+
+---
+
 ## Detailed Explanation
 
 ### 1. if, elif, else Statements

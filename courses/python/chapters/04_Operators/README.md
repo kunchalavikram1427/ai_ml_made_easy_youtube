@@ -28,6 +28,20 @@ By the end of this lesson, you will be able to:
 - Variables, Data Types & Type Casting (understanding of numeric types, strings)
 - Keywords, Syntax & Indentation (understanding of Python syntax and `and`/`or`/`not`/`is`/`in` keywords)
 
+## How to Run the Examples
+
+```bash
+cd courses/python/chapters/04_Operators
+
+python3 01_arithmetic_and_assignment.py
+python3 02_comparison_and_logical.py
+python3 03_bitwise_operators.py
+python3 04_identity_membership_precedence.py
+python3 05_calculator.py
+```
+
+Each script is standalone and prints its output directly. The `05_calculator.py` is an interactive mini-project.
+
 ---
 
 ## Detailed Explanation

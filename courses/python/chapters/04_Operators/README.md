@@ -1047,13 +1047,7 @@ Goodbye! Total calculations: 3
 
 - **Python Official Docs — Expressions:** https://docs.python.org/3/reference/expressions.html
 - **Python Official Docs — Operator Precedence:** https://docs.python.org/3/reference/expressions.html#operator-precedence
-- **Real Python — Operators and Expressions:** https://realpython.com/python-operators-expressions/
-- **Real Python — The Walrus Operator:** https://realpython.com/python-walrus-operator/
-- **Programiz — Python Operators:** https://www.programiz.com/python-programming/operators
-- **Python Tutor (Visualize expressions):** https://pythontutor.com/
 - **PEP 572 — Assignment Expressions (Walrus Operator):** https://peps.python.org/pep-0572/
-- **Calculator in 1 Line (YouTube Short):** https://youtube.com/shorts/Xb6wWEcSeuk
-- **IEEE 754 Floating Point (why 0.1 + 0.2 ≠ 0.3):** https://floating-point-gui.de/
 
 ---
 

@@ -1184,17 +1184,5 @@ GRADE DISTRIBUTION
 
 - **Python Official Docs - Control Flow**: https://docs.python.org/3/tutorial/controlflow.html
 - **Python Official Docs - match statement**: https://docs.python.org/3/reference/compound_stmts.html#the-match-statement
-- **Real Python - Conditional Statements**: https://realpython.com/python-conditional-statements/
-- **Real Python - Python for Loop**: https://realpython.com/python-for-loop/
-- **Real Python - Python while Loop**: https://realpython.com/python-while-loop/
-- **Programiz - Python if...else**: https://www.programiz.com/python-programming/if-elif-else
-- **Programiz - Python for Loop**: https://www.programiz.com/python-programming/for-loop
-- **W3Schools - Python Conditions**: https://www.w3schools.com/python/python_conditions.asp
-- **W3Schools - Python For Loops**: https://www.w3schools.com/python/python_for_loops.asp
-- **GeeksForGeeks - Python Control Flow**: https://www.geeksforgeeks.org/python-programming-language/#Control%20Flow
-
-### Video References
-- **Countdown Timer Mini-Project**: https://youtube.com/shorts/Zr-3nw7g3kk
-- **PEP 634 - Structural Pattern Matching**: https://peps.python.org/pep-0634/
 
 ---

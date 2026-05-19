@@ -940,15 +940,6 @@ Goodbye! Stay secure!
 - **Python Official Docs - String Methods**: https://docs.python.org/3/library/stdtypes.html#string-methods
 - **Python Official Docs - Format String Syntax**: https://docs.python.org/3/library/string.html#formatstrings
 - **Python Official Docs - f-strings (PEP 498)**: https://docs.python.org/3/reference/lexical_analysis.html#f-strings
-- **Real Python - Python Strings**: https://realpython.com/python-strings/
-- **Real Python - f-strings Guide**: https://realpython.com/python-f-strings/
-- **Programiz - Python Strings**: https://www.programiz.com/python-programming/string
-- **W3Schools - Python Strings**: https://www.w3schools.com/python/python_strings.asp
-- **GeeksForGeeks - Python Strings**: https://www.geeksforgeeks.org/python-string/
-
-### Video References
-- **Password Generator Mini-Project**: https://youtube.com/shorts/BN6IBv6scrY
-- **Coolshapes with Python**: https://www.youtube.com/shorts/CihzL31JD9U
 
 ---
 

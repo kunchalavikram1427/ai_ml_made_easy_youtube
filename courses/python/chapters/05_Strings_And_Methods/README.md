@@ -16,8 +16,7 @@ By the end of this lesson, you'll be comfortable creating, manipulating, and for
 - Use escape characters and raw strings effectively
 - Apply common string methods for text processing
 - Format strings using f-strings, .format(), and % operator
-- Compare strings and understand lexicographic ordering
-- Encode and decode strings for different character sets
+- Compare strings
 - Build a functional Password Generator
 
 ## Prerequisites
@@ -35,10 +34,10 @@ python3 01_string_creation_and_indexing.py
 python3 02_string_methods.py
 python3 03_string_formatting.py
 python3 04_string_operations.py
-python3 password_generator.py
+python3 05_password_generator.py
 ```
 
-Each script is standalone and prints its output directly. The `password_generator.py` is an interactive mini-project.
+Each script is standalone and prints its output directly. The `05_password_generator.py` is an interactive mini-project.
 
 ---
 
@@ -241,7 +240,6 @@ print(text.lower())       # 'hello, world!'
 print(text.title())       # 'Hello, World!'
 print(text.capitalize())  # 'Hello, world!'
 print(text.swapcase())    # 'hELLO, wORLD!'
-print(text.casefold())    # 'hello, world!' (more aggressive than lower())
 ```
 
 #### Stripping / Trimming Methods
@@ -498,26 +496,9 @@ print("hello" == "Hello")   # False (case-sensitive)
 # Case-insensitive comparison
 print("hello".lower() == "Hello".lower())  # True
 
-# Lexicographic (dictionary) ordering
-print("apple" < "banana")   # True (a comes before b)
-print("apple" < "Apple")    # False (lowercase > uppercase in ASCII)
-print("abc" < "abd")        # True (first difference at 'c' vs 'd')
-
 # Membership testing with 'in'
 print("Py" in "Python")     # True
 print("java" in "Python")   # False
-
-# Identity vs Equality
-a = "hello"
-b = "hello"
-print(a == b)   # True (same value)
-print(a is b)   # True (Python interns short strings)
-
-# But be careful with longer/computed strings:
-a = "hello world!"
-b = "hello " + "world!"
-print(a == b)   # True
-print(a is b)   # May be False (implementation-dependent)
 ```
 
 ### 11. Multi-line Strings
@@ -559,49 +540,6 @@ def get_help():
     return help_text
 
 print(get_help())
-```
-
-### 12. encode() and decode()
-
-Strings in Python 3 are Unicode by default. Sometimes you need to convert between strings and bytes:
-
-```python
-# Encoding: str -> bytes
-text = "Hello, World!"
-encoded = text.encode('utf-8')
-print(encoded)        # b'Hello, World!'
-print(type(encoded))  # <class 'bytes'>
-
-# Decoding: bytes -> str
-decoded = encoded.decode('utf-8')
-print(decoded)        # 'Hello, World!'
-print(type(decoded))  # <class 'str'>
-
-# Different encodings
-text = "Cafe"
-print(text.encode('ascii'))     # b'Cafe'
-print(text.encode('utf-8'))     # b'Cafe'
-print(text.encode('utf-16'))    # b'\xff\xfeC\x00a\x00f\x00e\x00'
-
-# Handling Unicode characters
-emoji_text = "Python is fun! \U0001F40D"
-print(emoji_text)
-encoded_emoji = emoji_text.encode('utf-8')
-print(encoded_emoji)
-
-# Handling encoding errors
-text_with_special = "Café"  # e with accent
-try:
-    ascii_encoded = text_with_special.encode('ascii')
-except UnicodeEncodeError as e:
-    print(f"Cannot encode: {e}")
-    # Use 'ignore' or 'replace' to handle errors
-    print(text_with_special.encode('ascii', errors='ignore'))    # b'Cafe'
-    print(text_with_special.encode('ascii', errors='replace'))   # b'Caf?'
-
-# Common use case: reading/writing files with specific encoding
-# with open('file.txt', 'r', encoding='utf-8') as f:
-#     content = f.read()
 ```
 
 ## Code Examples

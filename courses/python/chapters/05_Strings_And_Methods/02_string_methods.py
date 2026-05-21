@@ -105,6 +105,10 @@ text = "one-two-three-four-five"
 print(f"\n  '{text}'.split('-', 2)")
 print(f"  = {text.split('-', 2)}")   # Split only first 2
 
+# splitlines() - splits by line breaks
+multi = "Line 1\nLine 2\nLine 3"
+print(multi.splitlines())  # ['Line 1', 'Line 2', 'Line 3']
+
 #Get file extension
 filename = "report.pdf"
 name, ext = filename.rsplit(".", 1)   # Split from right, max 1

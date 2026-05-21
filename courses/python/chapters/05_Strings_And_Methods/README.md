@@ -35,9 +35,10 @@ python3 02_string_methods.py
 python3 03_string_formatting.py
 python3 04_string_operations.py
 python3 05_password_generator.py
+python3 06_email_validator.py
 ```
 
-Each script is standalone and prints its output directly. The `05_password_generator.py` is an interactive mini-project.
+Each script is standalone and prints its output directly. The `05_password_generator.py` and `06_email_validator.py` are interactive mini-projects.
 
 ---
 
@@ -568,96 +569,7 @@ def analyze_text(text):
 analyze_text("Hello World! Python 3.12 is amazing. Let's code!")
 ```
 
-### Example 2: Email Validator (Basic)
-
-```python
-def validate_email(email):
-    """Basic email validation using string methods."""
-    email = email.strip()
-    
-    # Check for exactly one @
-    if email.count('@') != 1:
-        return False, "Must contain exactly one @ symbol"
-    
-    # Split into local and domain parts
-    local, domain = email.split('@')
-    
-    # Check local part
-    if not local:
-        return False, "Local part (before @) cannot be empty"
-    if local.startswith('.') or local.endswith('.'):
-        return False, "Local part cannot start or end with a dot"
-    
-    # Check domain part
-    if not domain:
-        return False, "Domain part (after @) cannot be empty"
-    if '.' not in domain:
-        return False, "Domain must contain at least one dot"
-    if domain.startswith('.') or domain.endswith('.'):
-        return False, "Domain cannot start or end with a dot"
-    
-    # Check domain extension
-    extension = domain.split('.')[-1]
-    if len(extension) < 2:
-        return False, "Domain extension must be at least 2 characters"
-    if not extension.isalpha():
-        return False, "Domain extension must contain only letters"
-    
-    return True, "Valid email format"
-
-# Test cases
-test_emails = [
-    "user@example.com",
-    "user.name@domain.co.uk",
-    "invalid@",
-    "@domain.com",
-    "no.at.sign",
-    "user@@double.com",
-    "user@domain",
-]
-
-for email in test_emails:
-    valid, message = validate_email(email)
-    status = "VALID" if valid else "INVALID"
-    print(f"  {email:<30} -> {status}: {message}")
-```
-
-### Example 3: Caesar Cipher
-
-```python
-def caesar_encrypt(text, shift):
-    """Encrypt text using Caesar cipher."""
-    result = []
-    for char in text:
-        if char.isalpha():
-            # Determine the base (uppercase or lowercase)
-            base = ord('A') if char.isupper() else ord('a')
-            # Shift the character and wrap around
-            shifted = (ord(char) - base + shift) % 26 + base
-            result.append(chr(shifted))
-        else:
-            # Non-alphabetic characters remain unchanged
-            result.append(char)
-    return ''.join(result)
-
-def caesar_decrypt(text, shift):
-    """Decrypt text by shifting in the opposite direction."""
-    return caesar_encrypt(text, -shift)
-
-# Demo
-original = "Hello, World! Python is Fun!"
-shift = 3
-
-encrypted = caesar_encrypt(original, shift)
-decrypted = caesar_decrypt(encrypted, shift)
-
-print(f"Original:  {original}")
-print(f"Encrypted: {encrypted}")
-print(f"Decrypted: {decrypted}")
-print(f"Match: {original == decrypted}")
-```
-
-### Example 4: String Formatter Utility
+### Example 2: String Formatter Utility
 
 ```python
 def format_name(first, last, style="full"):
@@ -774,7 +686,113 @@ format_paragraph(sample, width=40, align="left")
 ******************************************
 ```
 
-### Exercise 3: Password Generator - Mini-Project (Advanced)
+### Exercise 3: Email Validator - Mini-Project (Intermediate)
+
+**Task**: Build an email login system that validates email addresses using string methods:
+
+1. Accept email input from the user
+2. Validate the email format (check for `@`, valid username, valid domain)
+3. Check if the domain is in the supported list (gmail.com, outlook.com, yahoo.com, hotmail.com, icloud.com)
+4. Accept a password (hidden using `getpass`)
+5. Display login success/failure with appropriate messages
+
+```python
+import getpass
+
+SUPPORTED_DOMAINS = [
+    "gmail.com",
+    "outlook.com",
+    "yahoo.com",
+    "hotmail.com",
+    "icloud.com"
+]
+
+def validate_email(email):
+    """Basic email validation using string methods."""
+    email = email.strip()
+
+    # Check for exactly one @
+    if email.count('@') != 1:
+        return False, "Must contain @ symbol"
+
+    # Split into username and domain parts
+    username, domain = email.split('@')
+
+    # Check username part
+    if not username:
+        return False, "Username (before @) cannot be empty"
+    if username.startswith('.') or username.endswith('.'):
+        return False, "Username cannot start or end with a dot"
+
+    # Check domain part
+    if not domain:
+        return False, "Domain part (after @) cannot be empty"
+    if '.' not in domain:
+        return False, "Domain must contain at least one dot"
+    if domain.startswith('.') or domain.endswith('.'):
+        return False, "Domain cannot start or end with a dot"
+
+    # Check domain extension
+    extension = domain.split('.')[-1]
+    if len(extension) < 2:
+        return False, "Domain extension must be at least 2 characters"
+    if not extension.isalpha():
+        return False, "Domain extension must contain only letters"
+
+    # Check if domain is supported
+    if domain.lower() not in SUPPORTED_DOMAINS:
+        supported_list = ", ".join(SUPPORTED_DOMAINS)
+        return False, f"Domain '{domain}' is not supported. Supported domains: {supported_list}"
+
+    return True, "Valid email format"
+
+
+def login():
+    """Simple login that validates email and accepts any password."""
+    print("=" * 40)
+    print("       EMAIL LOGIN SYSTEM")
+    print("=" * 40)
+
+    email = input("\nEnter your email: ")
+    is_valid, message = validate_email(email)
+
+    if not is_valid:
+        print(f"\n  Login FAILED: {message}")
+        return
+
+    password = getpass.getpass("Enter your password: ")
+
+    if not password:
+        print("\n  Login FAILED: Password cannot be empty")
+        return
+
+    username = email.split('@')[0]
+    print(f"\n  Login SUCCESSFUL!")
+    print(f"  Welcome, {username}")
+
+
+if __name__ == "__main__":
+    login()
+```
+
+**Expected Output:**
+```
+========================================
+       EMAIL LOGIN SYSTEM
+========================================
+
+Enter your email: vikram@gmail.com
+Enter your password:
+
+  Login SUCCESSFUL!
+  Welcome, vikram
+```
+
+**String methods used**: `strip()`, `count()`, `split()`, `startswith()`, `endswith()`, `isalpha()`, `lower()`, `join()`
+
+---
+
+### Exercise 4: Password Generator - Mini-Project (Advanced)
 
 **Reference**: [Password Generator Short](https://youtube.com/shorts/BN6IBv6scrY)
 

@@ -4,7 +4,7 @@ String Methods
 Run: python3 02_string_methods.py
 
 Covers:
-- Case methods: upper(), lower(), title(), capitalize(), swapcase()
+- Case methods: upper(), lower(), title(), capitalize()
 - Search methods: find(), index(), count(), startswith(), endswith()
 - Modify methods: replace(), strip(), lstrip(), rstrip()
 - Split and join: split(), join()
@@ -27,8 +27,6 @@ print(f"\n  .upper()      = '{text.upper()}'")
 print(f"  .lower()      = '{text.lower()}'")
 print(f"  .title()      = '{text.title()}'")
 print(f"  .capitalize() = '{text.capitalize()}'")
-print(f"  .swapcase()   = '{text.swapcase()}'")
-
 
 # =============================================================================
 # SEARCH METHODS
@@ -80,7 +78,7 @@ print(f"  .rstrip() = '{text.rstrip()}'")
 # Strip specific characters
 url = "///path/to/file///"
 print(f"\n  url = '{url}'")
-print(f"  .strip('/') = '{url.strip('/')}'")
+print(f"  .strip('/') = '{url.strip('/')}'") # strips '/' from both ends
 
 
 # =============================================================================
@@ -106,6 +104,12 @@ print(f"  = {fields}")
 text = "one-two-three-four-five"
 print(f"\n  '{text}'.split('-', 2)")
 print(f"  = {text.split('-', 2)}")   # Split only first 2
+
+#Get file extension
+filename = "report.pdf"
+name, ext = filename.rsplit(".", 1)   # Split from right, max 1
+print(f"\n  '{filename}'.rsplit('.', 1)")
+print(f"  = filename: '{name}', ext: '{ext}'")
 
 # join() — combines a list into a string
 words = ["Python", "is", "awesome"]
@@ -136,6 +140,19 @@ print(f"  '   '.isspace()    = {'   '.isspace()}")         # True (all whitespac
 print(f"  'Hello'.isupper()  = {'Hello'.isupper()}")      # False
 print(f"  'HELLO'.isupper()  = {'HELLO'.isupper()}")      # True
 print(f"  'hello'.islower()  = {'hello'.islower()}")      # True
+# ASCII checks: It checks whether all characters in the string are ASCII characters (Unicode code points 0–127).
+'''
+ASCII mainly represents standard English characters and basic computer symbols.
+A-Z
+a-z
+0-9
+basic symbols: @ # $ % & *
+control characters: \n, \t, \r
+'''
+print(f"  'hello'.isascii()   = {'hello'.isascii()}")      # True
+print(f"  '123'.isascii()     = {'123'.isascii()}")        # True
+print(f"  'αβγ'.isascii()     = {'αβγ'.isascii()}")        # False
+print(f"  '😀'.isascii()      = {'😀'.isascii()}")         # False
 
 
 # =============================================================================

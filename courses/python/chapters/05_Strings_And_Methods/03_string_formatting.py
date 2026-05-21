@@ -32,7 +32,6 @@ print(f"  f'Age: {{age}}'     = f'Age: {age}'")
 print(f"\n  --- Expressions ---")
 print(f"  f'2 + 3 = {{2 + 3}}'          = f'2 + 3 = {2 + 3}'")
 print(f"  f'{{name.upper()}}'            = f'{name.upper()}'")
-print(f"  f'{{len(name)}} chars'         = f'{len(name)} chars'")
 
 # Format specifications
 print(f"\n  --- Number Formatting ---")
@@ -45,13 +44,6 @@ print(f"  f'{{pi:.4f}}'       = '{pi:.4f}'")           # 4 decimal places
 print(f"  f'{{price:>10.2f}}' = '{price:>10.2f}'")     # right-aligned, 10 wide
 print(f"  f'{{big_num:,}}'    = '{big_num:,}'")        # thousands separator
 print(f"  f'{{big_num:_}}'    = '{big_num:_}'")        # underscore separator
-
-# Alignment
-print(f"\n  --- Alignment ---")
-items = ["Apple", "Banana", "Cherry"]
-prices = [1.5, 0.75, 3.2]
-for item, p in zip(items, prices):
-    print(f"  f'{{item:<10}} ${{p:.2f}}' = {item:<10} ${p:.2f}")
 
 # Padding and fill
 text = "Hi"
@@ -85,42 +77,3 @@ result = "{0} loves {1}. {1} is great!".format("Vikram", "Python")
 print(f"\n  --- Indexed ---")
 print(f"  '{{0}} loves {{1}}. {{1}} is great!'.format('Vikram', 'Python')")
 print(f"  = '{result}'")
-
-
-# =============================================================================
-# % FORMATTING (OLD-STYLE)
-# =============================================================================
-
-print(f"\n{'=' * 55}")
-print("  % FORMATTING (old-style)")
-print("=" * 55)
-
-print(f"\n  Note: Prefer f-strings for new code!")
-print(f"  This exists in older codebases.\n")
-
-# %s = string, %d = integer, %f = float
-result = "Name: %s, Age: %d" % (name, age)
-print(f"  'Name: %s, Age: %d' % (name, age)")
-print(f"  = '{result}'")
-
-result = "Pi = %.2f" % pi
-print(f"\n  'Pi = %.2f' % pi")
-print(f"  = '{result}'")
-
-
-# =============================================================================
-# COMPARISON
-# =============================================================================
-
-print(f"\n{'=' * 55}")
-print("  FORMATTING COMPARISON")
-print("=" * 55)
-
-x = 42
-print(f"\n  Same result, three ways:")
-print(f"  f-string:  f'Value: {{x}}'         -> 'Value: {x}'")
-print(f"  .format(): 'Value: {{}}'.format(x)  -> '{'Value: {}'.format(x)}'")
-print(f"  % format:  'Value: %d' % x        -> '{'Value: %d' % x}'")
-print(f"\n  Use f-strings! They're fastest and most readable.")
-
-print(f"\n{'=' * 55}")

@@ -30,10 +30,10 @@ cd courses/python/chapters/06_Conditionals
 
 python3 01_conditionals.py
 python3 quiz_game.py
-python3 countdown_timer.py
+python3 control_flow_playground.py
 ```
 
-Each script is standalone and prints its output directly. The `quiz_game.py` and `countdown_timer.py` are interactive mini-projects.
+Each script is standalone and prints its output directly. The `quiz_game.py` and `control_flow_playground.py` are interactive mini-projects.
 
 ---
 

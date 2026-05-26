@@ -146,16 +146,20 @@ def guessing_game():
                 print("  📈 WAY too low! Go much higher.")
             elif diff > max_num // 10:
                 print("  📈 Too low. Go higher.")
+            elif diff > 2:
+                print("  📈 Getting warm! Go a bit higher.")
             else:
-                print("  📈 A little low. You're close!")
+                print("  📈 SO close! Just a tiny bit higher!")
         else:
             diff = guess - secret
             if diff > max_num // 4:
                 print("  📉 WAY too high! Go much lower.")
             elif diff > max_num // 10:
                 print("  📉 Too high. Go lower.")
+            elif diff > 2:
+                print("  📉 Getting warm! Go a bit lower.")
             else:
-                print("  📉 A little high. You're close!")
+                print("  📉 SO close! Just a tiny bit lower!")
 
         # Bonus hint every 3 guesses
         if guesses_taken % 3 == 0 and guesses_taken < max_guesses:

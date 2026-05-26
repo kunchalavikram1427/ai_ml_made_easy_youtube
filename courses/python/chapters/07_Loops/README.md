@@ -34,11 +34,11 @@ cd courses/python/chapters/07_Loops
 
 python3 01_for_loops.py
 python3 02_while_loops_and_control.py
-python3 countdown_timer.py
+python3 control_flow_playground.py
 python3 quiz_game.py
 ```
 
-Each script is standalone and prints its output directly. The `countdown_timer.py` and `quiz_game.py` are interactive mini-projects.
+Each script is standalone and prints its output directly. The `control_flow_playground.py` and `quiz_game.py` are interactive mini-projects.
 
 ---
 

@@ -1,12 +1,53 @@
 # macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+._*
 
-# Python
+# Python bytecode
 __pycache__/
 *.py[cod]
+*$py.class
+
+# Virtual environments
 .venv/
 venv/
+env/
+ENV/
 .python-version
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+sdist/
+wheels/
+
+# Install logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+nosetests.xml
+
+# Mypy / type checking
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pytype/
 
 # Jupyter
 .ipynb_checkpoints/
@@ -14,7 +55,28 @@ venv/
 # IDEs
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
 
 # Environment files
 .env
 .env.*
+.env.local
+
+# Logs
+*.log
+
+# Database
+*.db
+*.sqlite3
+
+# OS generated
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Archives
+*.zip
+*.tar.gz
+*.rar

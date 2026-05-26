@@ -1,41 +1,39 @@
-# Control Flow - Conditionals & Loops
+# Loops
 
 ## Overview
 
-Control flow is the backbone of any programming language. It determines the order in which statements are executed in your program. Without control flow, programs would simply execute line by line from top to bottom with no ability to make decisions or repeat actions. Python provides elegant and readable control flow structures that make your code both powerful and easy to understand.
+Loops allow your program to repeat actions — whether you're iterating over a collection, waiting for a condition to change, or processing data until it's exhausted. Without loops, you'd have to write the same code over and over for each item you want to process.
 
-In this lesson, we'll cover two major categories of control flow: **conditionals** (if/elif/else, match-case) that allow your program to make decisions, and **loops** (for, while) that allow your program to repeat actions. We'll also explore loop control statements (break, continue, pass) and useful built-in functions like range(), enumerate(), and zip() that make loops more powerful.
+Python provides two main loop constructs: the `for` loop for iterating over sequences, and the `while` loop for condition-based repetition. Combined with control statements (`break`, `continue`, `pass`) and powerful built-in helpers like `range()`, `enumerate()`, and `zip()`, Python's loop tools let you write concise, readable code for any repetitive task.
 
-By mastering control flow, you'll be able to write programs that respond to different inputs, process collections of data, implement game logic, automate repetitive tasks, and much more. This is where your programs start to become truly interactive and intelligent.
+By mastering loops, you'll be able to process collections of data, automate repetitive tasks, build interactive programs, create patterns, and implement algorithms that require iteration.
 
 ## Learning Objectives
 
-- Write conditional statements using if, elif, and else
-- Use the ternary operator for concise conditional expressions
-- Implement structural pattern matching with match-case (Python 3.10+)
 - Create for loops to iterate over sequences and ranges
 - Use while loops for condition-based repetition
+- Use the range() function for generating number sequences
 - Control loop execution with break, continue, and pass
-- Understand and use the loop else clause
-- Leverage enumerate() and zip() for cleaner loop code
 - Build nested loops for multi-dimensional processing
-- Create a Countdown Timer and Number Guessing Game
+- Understand and use the loop else clause (Python-unique feature)
+- Leverage enumerate() and zip() for cleaner loop code
+- Implement common loop patterns (sentinel, retry, convergence)
+- Create and safely use infinite loops
 
 ## Prerequisites
 
 - Variables & Data Types
-- Keywords & Identifiers
 - Operators (especially comparison and logical operators)
-- Strings & Methods (for working with string data in conditions)
+- Strings & Methods
+- **Conditionals (if/elif/else)** — loops often contain conditional logic
 
 ## How to Run the Examples
 
 ```bash
-cd courses/python/chapters/06_Control_Flow_Conditionals_Loops
+cd courses/python/chapters/07_Loops
 
-python3 01_conditionals.py
-python3 02_for_loops.py
-python3 03_while_loops_and_control.py
+python3 01_for_loops.py
+python3 02_while_loops_and_control.py
 python3 countdown_timer.py
 python3 quiz_game.py
 ```
@@ -46,217 +44,7 @@ Each script is standalone and prints its output directly. The `countdown_timer.p
 
 ## Detailed Explanation
 
-### 1. if, elif, else Statements
-
-The `if` statement is the most basic form of decision-making in Python. It evaluates a condition and executes a block of code only if the condition is `True`.
-
-```python
-# Basic if statement
-age = 18
-if age >= 18:
-    print("You are an adult.")
-
-# if-else: two-way decision
-temperature = 35
-if temperature > 30:
-    print("It's hot outside!")
-else:
-    print("The weather is pleasant.")
-
-# if-elif-else: multi-way decision
-score = 85
-if score >= 90:
-    grade = 'A'
-elif score >= 80:
-    grade = 'B'
-elif score >= 70:
-    grade = 'C'
-elif score >= 60:
-    grade = 'D'
-else:
-    grade = 'F'
-print(f"Your grade is: {grade}")
-
-# Multiple conditions with logical operators
-age = 25
-has_license = True
-has_insurance = True
-
-if age >= 18 and has_license and has_insurance:
-    print("You can drive!")
-elif age >= 18 and has_license:
-    print("You need insurance first.")
-elif age >= 18:
-    print("You need a license first.")
-else:
-    print("You're too young to drive.")
-```
-
-**Important Rules:**
-- Python uses **indentation** (4 spaces) to define code blocks, not braces `{}`
-- The colon `:` at the end of the condition line is required
-- `elif` can appear multiple times; `else` can appear at most once
-- Conditions are evaluated top-to-bottom; the first `True` branch executes
-
-### 2. Nested Conditionals
-
-You can place if statements inside other if statements for more complex logic:
-
-```python
-# Nested conditionals
-age = 25
-employed = True
-credit_score = 750
-
-if age >= 18:
-    print("Age requirement met.")
-    if employed:
-        print("Employment requirement met.")
-        if credit_score >= 700:
-            print("Congratulations! Loan approved.")
-        else:
-            print("Sorry, credit score too low.")
-    else:
-        print("You must be employed to apply.")
-else:
-    print("You must be at least 18 to apply.")
-
-# Flattened version (often cleaner)
-if age < 18:
-    print("You must be at least 18 to apply.")
-elif not employed:
-    print("You must be employed to apply.")
-elif credit_score < 700:
-    print("Sorry, credit score too low.")
-else:
-    print("Congratulations! Loan approved.")
-```
-
-**Tip**: Avoid deeply nested conditionals when possible. Use early returns (in functions) or flatten with elif chains for better readability.
-
-### 3. Ternary Operator (Conditional Expression)
-
-Python's ternary operator provides a concise way to write simple if-else statements in a single line:
-
-```python
-# Syntax: value_if_true if condition else value_if_false
-
-# Basic ternary
-age = 20
-status = "adult" if age >= 18 else "minor"
-print(status)  # 'adult'
-
-# Using in print statements
-score = 85
-print(f"Result: {'Pass' if score >= 60 else 'Fail'}")
-
-# Assigning values
-x = 10
-y = 20
-maximum = x if x > y else y
-print(f"Maximum: {maximum}")  # 20
-
-# Nested ternary (use sparingly - can reduce readability)
-score = 75
-grade = 'A' if score >= 90 else 'B' if score >= 80 else 'C' if score >= 70 else 'F'
-print(f"Grade: {grade}")  # 'C'
-
-# In list comprehensions
-numbers = [1, -2, 3, -4, 5]
-abs_values = [x if x >= 0 else -x for x in numbers]
-print(abs_values)  # [1, 2, 3, 4, 5]
-```
-
-### 4. match-case (Python 3.10+ Structural Pattern Matching)
-
-The `match-case` statement provides powerful pattern matching, similar to switch statements in other languages but far more capable:
-
-```python
-# Basic match-case (like switch)
-def get_day_type(day):
-    match day.lower():
-        case "monday" | "tuesday" | "wednesday" | "thursday" | "friday":
-            return "Weekday"
-        case "saturday" | "sunday":
-            return "Weekend"
-        case _:
-            return "Invalid day"
-
-print(get_day_type("Monday"))   # 'Weekday'
-print(get_day_type("Sunday"))   # 'Weekend'
-
-# Match with value binding
-def describe_point(point):
-    match point:
-        case (0, 0):
-            return "Origin"
-        case (x, 0):
-            return f"On X-axis at x={x}"
-        case (0, y):
-            return f"On Y-axis at y={y}"
-        case (x, y):
-            return f"Point at ({x}, {y})"
-        case _:
-            return "Not a valid point"
-
-print(describe_point((0, 0)))    # 'Origin'
-print(describe_point((5, 0)))    # 'On X-axis at x=5'
-print(describe_point((3, 7)))    # 'Point at (3, 7)'
-
-# Match with guards (if conditions)
-def classify_number(n):
-    match n:
-        case x if x < 0:
-            return "Negative"
-        case 0:
-            return "Zero"
-        case x if x % 2 == 0:
-            return "Positive even"
-        case x:
-            return "Positive odd"
-
-print(classify_number(-5))   # 'Negative'
-print(classify_number(0))    # 'Zero'
-print(classify_number(4))    # 'Positive even'
-print(classify_number(7))    # 'Positive odd'
-
-# Match with dictionaries/mappings
-def process_command(command):
-    match command:
-        case {"action": "move", "direction": direction}:
-            return f"Moving {direction}"
-        case {"action": "attack", "target": target}:
-            return f"Attacking {target}"
-        case {"action": "heal", "amount": amount}:
-            return f"Healing for {amount} HP"
-        case _:
-            return "Unknown command"
-
-print(process_command({"action": "move", "direction": "north"}))
-print(process_command({"action": "attack", "target": "dragon"}))
-
-# HTTP status codes example
-def http_status(code):
-    match code:
-        case 200:
-            return "OK"
-        case 301:
-            return "Moved Permanently"
-        case 404:
-            return "Not Found"
-        case 500:
-            return "Internal Server Error"
-        case code if 200 <= code < 300:
-            return f"Success ({code})"
-        case code if 400 <= code < 500:
-            return f"Client Error ({code})"
-        case code if 500 <= code < 600:
-            return f"Server Error ({code})"
-        case _:
-            return f"Unknown status ({code})"
-```
-
-### 5. for Loops
+### 1. for Loops
 
 The `for` loop iterates over items in a sequence (list, string, tuple, range, etc.):
 
@@ -292,7 +80,7 @@ else:
     print("\nLoop completed successfully!")
 ```
 
-### 6. while Loops
+### 2. while Loops
 
 The `while` loop continues executing as long as its condition is `True`:
 
@@ -339,7 +127,7 @@ else:
     print("While loop finished normally (no break)")
 ```
 
-### 7. range() Function
+### 3. range() Function
 
 The `range()` function generates a sequence of numbers and is commonly used with for loops:
 
@@ -385,7 +173,7 @@ print(999_999 in huge_range)  # True (fast membership testing)
 print(len(huge_range))         # 1000000000
 ```
 
-### 8. break Statement
+### 4. break Statement
 
 `break` immediately terminates the innermost loop it's in:
 
@@ -423,7 +211,7 @@ while True:
     print("Try again...")
 ```
 
-### 9. continue Statement
+### 5. continue Statement
 
 `continue` skips the rest of the current iteration and moves to the next:
 
@@ -468,7 +256,7 @@ for line in log_lines:
     print(f"  {line}")
 ```
 
-### 10. pass Statement
+### 6. pass Statement
 
 `pass` is a null operation - it does nothing. It's used as a placeholder:
 
@@ -502,7 +290,7 @@ except ZeroDivisionError:
 #     pass
 ```
 
-### 11. Nested Loops
+### 7. Nested Loops
 
 Loops inside loops create multi-dimensional iterations:
 
@@ -558,7 +346,7 @@ for row in matrix:
 print(f"\nFlattened: {flat}")
 ```
 
-### 12. Loop else Clause
+### 8. Loop else Clause
 
 Python's unique feature - the `else` clause on loops runs when the loop completes normally (without `break`):
 
@@ -607,7 +395,7 @@ else:
     print(f"Username '{new_username}' is available!")
 ```
 
-### 13. enumerate() and zip() in Loops
+### 9. enumerate() and zip() in Loops
 
 These built-in functions make loops more Pythonic and readable:
 
@@ -665,7 +453,7 @@ print(numbers)  # (1, 2, 3)
 print(letters)  # ('a', 'b', 'c')
 ```
 
-### 14. Infinite Loops and When to Use Them
+### 10. Infinite Loops and When to Use Them
 
 Infinite loops run forever until explicitly stopped. They're useful for certain patterns:
 
@@ -742,34 +530,11 @@ while True:
     time.sleep(wait_time)
 ```
 
+---
+
 ## Code Examples
 
-### Example 1: FizzBuzz (Classic Interview Question)
-
-```python
-def fizzbuzz(n):
-    """
-    Print numbers from 1 to n with the following rules:
-    - Divisible by 3: print "Fizz"
-    - Divisible by 5: print "Buzz"
-    - Divisible by both 3 and 5: print "FizzBuzz"
-    - Otherwise: print the number
-    """
-    for i in range(1, n + 1):
-        if i % 3 == 0 and i % 5 == 0:
-            print("FizzBuzz", end=" ")
-        elif i % 3 == 0:
-            print("Fizz", end=" ")
-        elif i % 5 == 0:
-            print("Buzz", end=" ")
-        else:
-            print(i, end=" ")
-    print()
-
-fizzbuzz(30)
-```
-
-### Example 2: Prime Number Checker and Generator
+### Example 1: Prime Number Checker and Generator
 
 ```python
 def is_prime(n):
@@ -812,7 +577,7 @@ print(f"\nThe 10th prime is: {nth_prime(10)}")
 print(f"The 100th prime is: {nth_prime(100)}")
 ```
 
-### Example 3: Pattern Printer
+### Example 2: Pattern Printer
 
 ```python
 def print_diamond(n):
@@ -849,79 +614,7 @@ print("\nNumber Pattern (n=5):")
 print_number_pattern(5)
 ```
 
-### Example 4: Simple ATM Simulator
-
-```python
-def atm_simulator():
-    """Simulate a basic ATM with PIN verification and transactions."""
-    correct_pin = "1234"
-    balance = 5000.00
-    max_attempts = 3
-    
-    print("=" * 40)
-    print("      Welcome to Python Bank ATM")
-    print("=" * 40)
-    
-    # PIN verification with limited attempts
-    attempts = 0
-    authenticated = False
-    
-    while attempts < max_attempts:
-        pin = input(f"\nEnter your PIN ({max_attempts - attempts} attempts left): ")
-        if pin == correct_pin:
-            authenticated = True
-            print("\nPIN accepted! Welcome, Customer.")
-            break
-        else:
-            attempts += 1
-            if attempts < max_attempts:
-                print("Incorrect PIN. Try again.")
-    
-    if not authenticated:
-        print("\nToo many incorrect attempts. Card blocked.")
-        return
-    
-    # Main transaction loop
-    while True:
-        print(f"\n{'─' * 40}")
-        print(f"  Current Balance: ${balance:,.2f}")
-        print(f"{'─' * 40}")
-        print("  1. Check Balance")
-        print("  2. Deposit")
-        print("  3. Withdraw")
-        print("  4. Exit")
-        
-        choice = input("\n  Select option: ")
-        
-        match choice:
-            case "1":
-                print(f"\n  Your balance is: ${balance:,.2f}")
-            case "2":
-                amount = input("  Enter deposit amount: $")
-                if amount.replace('.', '', 1).isdigit() and float(amount) > 0:
-                    balance += float(amount)
-                    print(f"  Deposited ${float(amount):,.2f}")
-                else:
-                    print("  Invalid amount.")
-            case "3":
-                amount = input("  Enter withdrawal amount: $")
-                if amount.replace('.', '', 1).isdigit() and float(amount) > 0:
-                    if float(amount) <= balance:
-                        balance -= float(amount)
-                        print(f"  Withdrawn ${float(amount):,.2f}")
-                    else:
-                        print("  Insufficient funds!")
-                else:
-                    print("  Invalid amount.")
-            case "4":
-                print("\n  Thank you for banking with us. Goodbye!")
-                break
-            case _:
-                print("  Invalid option. Please try again.")
-
-# Run the ATM (uncomment to execute)
-# atm_simulator()
-```
+---
 
 ## Exercises
 
@@ -1033,7 +726,6 @@ def number_guessing_game():
         # - Use random.randint(1, 100)
         # - Score formula: max_attempts - attempts_used + 1
         # - Validate input is a number between 1-100
-        # - Use match-case for difficulty selection
         pass
 
 # Run the game
@@ -1074,9 +766,9 @@ Play again? (y/n): n
 Thanks for playing!
 ```
 
-### Exercise 3: Interactive Menu System - Mini-Project (Advanced)
+### Exercise 3: Interactive Grade Management System (Advanced)
 
-**Task**: Build a comprehensive interactive grade management system that combines all control flow concepts:
+**Task**: Build a comprehensive interactive grade management system that combines all loop concepts:
 
 1. A main menu loop with options
 2. Add students with their grades
@@ -1100,8 +792,8 @@ def grade_management_system():
     - Filter by grade range
     - Export summary
     
-    Uses: if/elif/else, for loops, while loops, break, continue,
-          enumerate, nested loops, match-case
+    Uses: for loops, while loops, break, continue,
+          enumerate, nested loops, range
     """
     students = {}  # {"name": {"math": 85, "science": 90, ...}}
     
@@ -1123,11 +815,10 @@ def grade_management_system():
         choice = input("  Select option: ")
         
         # TODO: Implement each menu option
-        # TODO: Use match-case for option handling
-        # TODO: Implement proper input validation
         # TODO: Use nested loops for multi-subject grades
         # TODO: Use enumerate for numbered displays
         # TODO: Use break/continue appropriately
+        # TODO: Use while loops for input validation
         
         match choice:
             case "1":
@@ -1158,7 +849,7 @@ def grade_management_system():
                 # Remove student with confirmation
                 pass
             case "9":
-                print("\n  Goodbye! Keep studying! 📚")
+                print("\n  Goodbye! Keep studying!")
                 break
             case _:
                 print("  Invalid option. Please try again.")
@@ -1180,9 +871,13 @@ GRADE DISTRIBUTION
   Total: 18 students | Class Average: 76.4
 ```
 
+---
+
 ## Resources & References
 
 - **Python Official Docs - Control Flow**: https://docs.python.org/3/tutorial/controlflow.html
-- **Python Official Docs - match statement**: https://docs.python.org/3/reference/compound_stmts.html#the-match-statement
+- **Python Official Docs - for statement**: https://docs.python.org/3/reference/compound_stmts.html#the-for-statement
+- **Python Official Docs - while statement**: https://docs.python.org/3/reference/compound_stmts.html#the-while-statement
+- **Built-in Functions (range, enumerate, zip)**: https://docs.python.org/3/library/functions.html
 
 ---

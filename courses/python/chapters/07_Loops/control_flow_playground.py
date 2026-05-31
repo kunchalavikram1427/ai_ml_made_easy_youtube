@@ -256,12 +256,49 @@ def pattern_printer():
         stars = "* " * i
         print(f"  {spaces}{stars}")
 
-    # Number pattern
+    # Left triangle (stars build from right to left)
+    print(f"\n  --- Left Triangle (size={n}) ---")
+    for i in range(1, n + 1):
+        spaces = "  " * (n - i)
+        stars = "* " * i
+        print(f"  {spaces}{stars}")
+
+    # Inverted left triangle
+    print(f"\n  --- Inverted Left Triangle (size={n}) ---")
+    for i in range(n, 0, -1):
+        spaces = " " * (n - i)
+        stars = "* " * i
+        print(f"  {spaces}{stars}")
+
+    # Number pattern (sequential)
     print(f"\n  --- Number Pattern ---")
     for i in range(1, n + 1):
         for j in range(1, i + 1):
             print(j, end=" ")
         print()
+
+    # Number Printer - prints numbers in various patterns
+    print(f"\n  --- Number Printer (Pyramid) ---")
+    for i in range(1, n + 1):
+        spaces = " " * (n - i)
+        nums = " ".join(str(j) for j in range(1, i + 1))
+        print(f"  {spaces}{nums}")
+
+    print(f"\n  --- Number Printer (Mirrored) ---")
+    for i in range(1, n + 1):
+        spaces = " " * (n - i)
+        nums_asc = list(range(1, i + 1))
+        nums_desc = list(range(i - 1, 0, -1))
+        row = " ".join(str(x) for x in nums_asc + nums_desc)
+        print(f"  {spaces}{row}")
+
+    print(f"\n  --- Number Printer (Multiplication Table) ---")
+    # Header
+    print("  " + "    " + "  ".join(f"{j:>2}" for j in range(1, n + 1)))
+    print("  " + "   +" + "---" * n)
+    for i in range(1, n + 1):
+        row = "  ".join(f"{i * j:>2}" for j in range(1, n + 1))
+        print(f"  {i:>2} | {row}")
 
     input("\n  Press Enter to return to menu...")
 
